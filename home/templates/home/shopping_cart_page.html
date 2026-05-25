@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+
+
+<link rel="stylesheet" href="{% static 'home/css/shopping_cart_page.css' %}">
+{% endblock extra_css %}
+
+{% block header %}
+    <img src="{% static 'home/images/top/ALREP_alu_profiles_06_01PF-pink.png' %}" alt="header image" class="header-image">
+{% endblock %}
+
+{% block main %}
+    <section class="section-title">
+        {% csrf_token %}
+        <h2 class="section-title__lead">
+            Check-Out
+        </h2>
+        <h1 class="section-title__title">
+            Cart
+        </h1>
+    </section>
+
+    <section
+            class="section-cart"
+            x-data="shopping_cart_data()"
+            x-init="init()"
+    >
+    <div class="section-cart__grid">
+        
+        <p class="section-cart__grid__title product">product</p>
+        <p class="section-cart__grid__title price">price</p>
+        <p class="section-cart__grid__title quantity">quantity</p>
+        <p class="section-cart__grid__title total">total</p>
+        <hr class="section-cart__grid__hr-top">
+        <template x-for="(product, index) in products" :key="index">
+            <div class="section-cart__grid__product">
+                <div class="section-cart__grid__product__image">
+                    <img class="section-cart__grid__product__img" src="{% static 'home/images/element.png' %}" alt="element"/>
+                </div>
+                <div class="section-cart__grid__product__title">
+                    <span x-text="product.name"></span>
+                </div>
+                <div class="section-cart__grid__product__price-detail">
+                    <span x-text="`${product.price_unit.toFixed(2)} GBP`"></span>
+                </div>
+                <div class="section-cart__grid__product__quantity">
+                    <button class="section-cart__grid__product__quantity--button"
+                            @click="addUnit(index)"
+                    >
+                        <img class="section-cart__grid__product__quantity--button__img" src="{% static 'home/images/addition.svg' %}" alt="element"/>
+                    </button>
+                    <span class="section-cart__grid__product__quantity--display">
+                        <span x-text="product.quantity"></span>
+                    </span>
+                    <button class="section-cart__grid__product__quantity--button"
+                            @click="subUnit(index)"
+                    >
+                        <img class="section-cart__grid__product__quantity--button__img" src="{% static 'home/images/subtraction.svg' %}" alt="element"/>
+                    </button>
+                </div>
+                <div class="section-cart__grid__product__price-total">
+                    <span x-text="`${(product.price_unit.toFixed(2)*product.quantity).toFixed(2)} GBP`"></span>
+                </div>
+                <button class="section-cart__grid__product__remove"
+                        @click="remove(index)"
+                >
+                    remove
+                </button>
+            </div>
+        </template>
+        <hr class="section-cart__grid__hr-bottom">
+    </div>
+    <div class="section-cart__additives">
+        <h1 class="section-cart__additives__additive">SUBTOTAL</h1>
+        <h2 class="section-cart__additives__cost"><span x-text="`${Number(subtotalPrice).toFixed(2)} GBP`"></span></h2>
+        <h1 class="section-cart__additives__additive">VAT ({{ settings.home.ShopSettings.tax }}%)</h1>
+        <h2 class="section-cart__additives__cost"><span x-text="`${Number(taxPrice).toFixed(2)} GBP`"></span></h2>
+        <h1 class="section-cart__additives__additive">SHIPPING</h1>
+        <h2 class="section-cart__additives__cost">{{ settings.home.ShopSettings.delivery_price }} GBP</h2>
+        <hr class="section-cart__additives__hr">
+    </div>
+    <div class="section-cart__summary">
+        <a class="section-cart__summary__back">← BACK</a>
+        <h1 class="section-cart__summary__total">TOTAL</h1>
+        <h2 class="section-cart__summary__price"><span x-text="`${Number(totalPrice).toFixed(2)} GBP`"></span></h2>
+        <label for="note" class="section-cart__summary__note-label">Add a note to your order</label>
+        <textarea id="note" class="section-cart__summary__note"></textarea>
+        <a href="/checkout" class="section-cart__summary__checkout"> <!-- IMPORTANT -->
+            CHECK-OUT →
+        </a>
+    </div>
+    </section>
+
+    <div style="display: none" id="initial-data">{{ products|json_script:"initial-data" }}</div>
+    <div style="display: none" id="initial-tax">{{ tax_price }}</div>
+    <div style="display: none" id="initial-subtotal">{{ subtotal_price }}</div>
+    <div style="display: none" id="initial-price">{{ total_price }}</div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{% static 'home/js/shopping_cart_page.js' %}"></script>
+{% endblock %}

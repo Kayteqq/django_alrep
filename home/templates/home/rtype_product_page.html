@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+
+
+<link rel="stylesheet" href="{% static 'home/css/prtype_product_page.css' %}">
+{% endblock extra_css %}
+
+{% block header %}
+    <div style="display: contents"
+         x-data="{opened: false}"
+         @configurator-updated.window="opened = $event.detail.opened; console.log(opened)"
+    >
+        <template x-if="!opened">
+            <img src="{% static 'home/images/top/ALREP_alu_profiles_05_01PF.png' %}" alt="header image" class="header-image-03">
+        </template>
+        <template x-if="opened">
+            <img src="{% static 'home/images/top/ALREP_alu_profiles_06_01PF.png' %}" alt="header image" class="header-image-00">
+        </template>
+    </div>
+{% endblock header %}
+
+{% block main %}
+    <section
+            class="section-configurator"
+            x-data="rtype_product_configurator()"
+            x-init="update();"
+            @blur="update()"
+            @focusout="update()"
+            @keydown.window="if(['Tab', 'Enter', ''].includes($event.key)) update()"
+            @mouseup.window="update()"
+    >
+    {% csrf_token %}
+
+        <template x-if="!opened">
+            <div class="section-configurator__step-1">
+                <div class="section-configurator__step-1__titles">
+                    <div class="section-configurator__lead">
+                        Our Offer
+                    </div>
+                    <div class="section-configurator__title">
+                        Profiles
+                    </div>
+                    <div class="section-configurator__initial-choice--flex">
+                        {% for profile in profiles %}
+                            <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='{{ profile.profile_type }}'; input.name='{{ profile.title }}'; opened = !opened; loadDimensions(); update();">
+                                <div class="section-configurator__initial-choice__option__element">
+                                    {% if profile.profile_type == 'FP' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'EA' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'UA' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'US' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'TS' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'SQ' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'RT' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'CT' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'AD' %}
+
+                                    {% endif %}
+                                    <span class="section-configurator__initial-choice__option__element__text">{{ profile.title }}</span>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template x-if="opened">
+            <div class="section-configurator__step-2">
+                <div class="section-configurator__step-2__titles">
+                    <div class="section-configurator__lead">
+                        Our Offer
+                    </div>
+                    <div class="section-configurator__title">
+                        Profiles: <i x-text="input.name"></i>
+                    </div>
+
+                </div>
+                <div class="section-configurator__svg-display">
+
+                </div>
+                <div class="section-configurator__input">
+                   <div class="section-configurator__input__text">
+                        Some short description about window sills and the configurator, its purpose, how it works, and the next steps |in the process.
+                   </div>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-width-L">Width L [mm]</label>
+                            <input
+                            id="input-width-L"
+                            type="number"
+                            x-model.number="input.widthL"
+                            inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-amount">Number of elements</label>
+                            <input
+                                    id="input-amount"
+                                    type="number"
+                                    x-model.number="input.amount"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <p class="section-configurator__input__radio-span">select sheet dimensions</p>
+                        <div class="section-configurator__input__radio">
+                            <template x-for="(item, index) in options" :key="input.shape + index">
+                                <label class="section-configurator__input__option">
+                                    <input :name="'dimension_' + input.shape" checked class="sr-only" type="radio" :value="item.size" x-model="input.selectedDimensions" @change="update()"/>
+                                    <span x-text="item.size"></span>
+                                </label>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__grid">
+                            <label for="input-color">RAL Color Selection</label>
+                            <template x-if="selectedColor">
+                                <div class="color-display" style="grid-row: 2; grid-column: 1; z-index: 3;">
+                                        <p x-text="`${selectedColor.id} - ${selectedColor.name}`"></p>
+                                </div>
+                            </template>
+                            <input
+                                    style="grid-row: 2; grid-column: 1"
+                                    @focus="selectedColor = null; isActive = true"
+                                    @blur="isActive = false"
+                                    id="input-color"
+                                    type="text"
+                                    x-model.number="colorSearch"
+                                    inputmode="text"
+                                    :placeholder="`${selectedColor ? '' : 'Search RAL Color'}`"
+                            />
+                            <template x-if="filteredColors.length > 0 && !selectedColor">
+                                <ul class="section-configurator__input__color-list">
+                                    <template x-for="color in filteredColors" :key="color.id">
+                                        <li @click="selectColor(color)">
+                                            <div class="section-configurator__input__color-list__element">
+                                                <span class="font-bold" x-text="color.id"></span>
+                                                <span x-text="color.name"></span>
+                                                <span x-text="`#${color.hex}`"></span>
+
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </template>
+
+
+
+                        </div>
+                        <a class="section-configurator__confirm-button"
+                               href="{{ cart_page.url }}"
+                               @click.prevent="
+                                    await sendData(input, 'add-product');
+                                    window.location.href = {{ cart_page.url }}
+                               "
+                            >
+                                ADD TO BASKET <span x-text="`${(price*input.amount).toFixed(2)}£`"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+    </section>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    {% for profile in profiles %}
+        <script type="application/json" id="dims-{{ profile.profile_type }}">
+            [
+                {% for block in profile.price_list %}
+                    {
+                        "size": "{{ block.value.size|escapejs }}",
+                        "price": "{{ block.value.price_per_meter|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ]
+        </script>
+    {% endfor %}
+
+    <script src="{% static 'home/js/ral_complete_colorset.js' %}"></script>
+    <script src="{% static 'home/js/rtype_product_configurator.js' %}"></script>
+{% endblock %}

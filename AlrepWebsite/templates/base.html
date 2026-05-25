@@ -1,0 +1,91 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+            {% wagtail_site as current_site %}
+            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+        {#  #}
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/structure.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/parameters.css' %}">
+
+        {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+
+    <body class="{% block body_class %}body{% endblock %}">
+        {% include 'sprite.svg' %}
+
+        {% wagtailuserbar %}
+
+        <nav class="navbar">
+            <a class="navbar__logo" href="{{ home_page.url }}">
+                <svg class="navbar__logo__svg"><use xlink:href="#alrepLogo"></use></svg>
+            </a>
+            <div class="navbar__menu">
+                <ul class="navbar__menu__list">
+                    {% for block in navbar_links %}
+                        <li class="navbar__menu__list__item"><a href="{{ block.value.page.url }}">{{ block.value.text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="navbar__icons">
+                <a href="{{ cart_page.url }}" class="navbar__icons__shop">
+                    <img class="navbar__icons__shop__img" src="{% static 'images/cart-icon_#E38074.png' %}" alt="">
+                </a>
+
+            </div>
+        </nav>
+
+        <header class="{% block header_class %}header{% endblock %}">
+            {% block header %}{% endblock %}
+        </header>
+
+        <main class="{% block main_class %}main{% endblock %}" {% block main_html_tags %}{% endblock %}>
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="footer">
+            <div class="footer__column">
+                <div class="footer__column__line">Copyright Alrep</div>
+            </div>
+            <div class="footer__column center" >
+                <div class="footer__column__line">Keep in Touch</div>
+            </div>
+            <div class="footer__column">
+                <div class="footer__column__line">Terms & Conditions</div>
+                <div class="footer__column__line">Privacy Policy</div>
+            </div>
+        </footer>
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/structure.js' %}"></script>
+
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

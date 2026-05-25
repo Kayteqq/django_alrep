@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}homepage{% endblock %}
+
+{% block extra_css %}
+
+
+<link rel="stylesheet" href="{% static 'home/css/home_page.css' %}">
+{% endblock extra_css %}
+
+{% block header %}
+    <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF.png' %}" alt="header image" class="header-image">
+{% endblock %}
+
+{% block main %}
+
+    <section class="section-products">
+        <h1 class="section-products__lead">Our products</h1>
+
+        <div class="section-products__grid">
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol1"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    L-Shaped Cills
+                </p>
+            </div>
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol2"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    Z-Shaped Cills
+                </p>
+            </div>
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol3"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    U-Shaped Cills
+                </p>
+            </div>
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol4"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    Round Profiles
+                </p>
+            </div>
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol5"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    Rectangular
+                </p>
+            </div>
+            <div class="section-products__grid__item">
+                <div class="section-products__grid__item__icon">
+                    <svg class="section-products__grid__item__icon__svg">
+                        <use xlink:href="#categorySymbol6"></use>
+                    </svg>
+                </div>
+                <p class="section-products__grid__item__text">
+                    Open Profiles
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="section-categories">
+        <a class="section-categories__item" href="{{ page.redirect_product_1.url }}">
+            <img class="section-categories__item__img" src="{% static 'home/images/main/ALREP_windows_cills_all_02_01PF.png' %}" alt="element">
+            <img class="section-categories__item__img hover" src="{% static 'home/images/main/ALREP_windows_cills_all_02_01PF-pink.png' %}" alt="element">
+            <h2 class="section-categories__item__subtitle">Window Cills</h2>
+            <p class="section-categories__item__text">Discover our range of durable and elegant window cills designed to enhance both interior and exterior spaces.</p>
+        </a>
+        <a class="section-categories__item" href="{{ page.redirect_product_2.url }}">
+            <img class="section-categories__item__img" src="{% static 'home/images/main/ALREP_windows_cills_all_01_01PF.png' %}" alt="element">
+            <img class="section-categories__item__img hover" src="{% static 'home/images/main/ALREP_windows_cills_all_01_01PF-pink.png' %}" alt="element">
+            <h2 class="section-categories__item__subtitle">Pressings</h2>
+            <p class="section-categories__item__text">Explore our precision-made pressings tailored to meet functional and aesthetic architectural needs.</p>
+        </a>
+        <a class="section-categories__item" href="{{ page.redirect_product_3.url }}">
+            <img class="section-categories__item__img" src="{% static 'home/images/main/ALREP_alu_profiles_02_01PF.png' %}" alt="element">
+            <img class="section-categories__item__img hover" src="{% static 'home/images/main/ALREP_alu_profiles_02_01PF-pink.png' %}" alt="element">
+            <h2 class="section-categories__item__subtitle">Profiles</h2>
+            <p class="section-categories__item__text">Browse our versatile profiles engineered for seamless integration and long-lasting performance.</p>
+
+        </a>
+    </section>
+    <section class="section-meet-alrep">
+        <h1 class="section-meet-alrep__lead">
+            Meet Alrep
+        </h1>
+        <p class="section-meet-alrep__text">
+            Some intro description that introduces company, products or values.<br>
+            <b>ALREP employs a collaborative approach.</b> Together with the client, <b>the company
+            helps to determine the project’s requirements and feasibility</b>. In just a short time,
+            the company is able to give the client a precise estimate and concrete feedback
+            regarding the production of the extrusion itself.
+        </p>
+    </section>
+    <section class="section-contact">
+        <div class="section-contact__left">
+            <img class="section-contact__left__img" src="{% static 'home/images/main/ALREP_alu_profiles_04b_01PF.png' %}" alt="profiles visualisation">
+        </div>
+        <div class="section-contact__right">
+            <button class="section-contact__right__button">contact us</button>
+        </div>
+    </section>
+{#    <section class="section-last-seen">#}
+{#        <h1 class="section-last-seen__lead">RECOMMENDED / LAST SEEN</h1>#}
+{#        <div class="section-last-seen__grid">#}
+{#            <div class="section-last-seen__grid__item">#}
+{#                <div class="section-last-seen__grid__item__img">#}
+{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
+{#                </div>#}
+{#                <h2 class="section-last-seen__grid__item__title">Flat plate</h2>#}
+{#                <div class="section-last-seen__grid__item__tags">#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Flat#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Aluminium#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        400MM#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        RAL PALETTE#}
+{#                    </p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="section-last-seen__grid__item">#}
+{#                <div class="section-last-seen__grid__item__img">#}
+{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
+{#                </div>#}
+{#                <h2 class="section-last-seen__grid__item__title">Equal angle</h2>#}
+{#                <div class="section-last-seen__grid__item__tags">#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Flat Angle#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Aluminium#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        400MM#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        RAL PALETTE#}
+{#                    </p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="section-last-seen__grid__item">#}
+{#                <div class="section-last-seen__grid__item__img">#}
+{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
+{#                </div>#}
+{#                <h2 class="section-last-seen__grid__item__title">Rectangural tube</h2>#}
+{#                <div class="section-last-seen__grid__item__tags">#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Tube#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        Aluminium#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        400MM#}
+{#                    </p>#}
+{#                    <p class="section-last-seen__grid__item__tags__tag">#}
+{#                        RAL PALETTE#}
+{#                    </p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+
+
+{% endblock main %}
+
+{% block extra_js %}
+{% endblock %}

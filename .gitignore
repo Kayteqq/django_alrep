@@ -1,0 +1,23 @@
+# Pamięć podręczna Pythona (pliki skompilowane)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Środowisko wirtualne (jeśli tworzyłeś je wewnątrz projektu)
+venv/
+.venv/
+env/
+
+# Konfiguracja PyCharma / IntelliJ
+.idea/
+*.iws
+*.iml
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki z wrażliwymi danymi (np. hasła, klucze API) - dodaj, jeśli używasz
+.env

@@ -1,0 +1,110 @@
+.navbar {
+    background-color: var(--alrep-black);
+    font-family: 'IBMPlexMono-Medium', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.9375rem;
+    line-height: 1.875;
+    letter-spacing: 0.234375rem;
+    color: var(--alrep-pink);
+    --color-fill: var(--alrep-pink);
+    display: flex;
+    flex-direction: row;
+    height: 6.25rem;
+    padding: 0 3.125rem 0 3.125rem;
+    align-items: center;
+}
+
+.navbar__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar__logo__svg {
+    height: 1.875vw;
+    width: 13.54166667vw;
+}
+
+.navbar__menu__list {
+    display: flex;
+    flex-direction: row;
+    width: 50.10416667vw;
+    justify-content: space-between;
+    margin-left: calc(15.625vw - 8.1875rem);
+}
+
+.navbar__menu__list__item {
+    width: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.navbar__icons {
+    display: flex;
+    flex-direction: row;
+    gap: 2.25rem;
+    margin-left: auto;
+}
+
+.navbar__icons__shop__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.8125rem;
+    height: 2.8125rem;
+}
+.navbar__icons__search__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.8125rem;
+    height: 2.8125rem;
+}
+
+.header {
+    display: flex;
+    background-color: var(--alrep-gray);
+    height: 21.875rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.main {
+    background-color: var(--alrep-white);
+    min-height: calc(100vh - 25rem);
+    padding: 0 15.625vw 0 15.625vw;
+    width: auto;
+
+}
+
+.footer {
+    background-color: var(--alrep-black);
+    font-family: 'IBMPlexMono-Regular', sans-serif;
+    color: var(--alrep-pink);
+    --color-fill: var(--alrep-pink);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    line-height: 1.875rem;
+    letter-spacing: 0.1875rem;
+    text-transform: uppercase;
+    height: 18.75rem;
+    padding: 0 19.375rem 0 19.375rem;
+}
+
+.footer__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 6.9375rem;
+    width: 11.625rem;
+}
+
+.footer__column.center {
+    align-items: center;
+}

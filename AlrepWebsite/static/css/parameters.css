@@ -1,0 +1,201 @@
+html {
+    font-size: 6px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background-color: var(--alrep-black);
+
+}
+
+@media (min-width: 325px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media (min-width: 435px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 580px)
+{
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 1000px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media(min-width: 1250px)
+{
+    html {
+        font-size: 14px;
+    }
+}
+
+@media(min-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+section {
+    flex: 0 0 auto;
+}
+
+:root {
+    --alrep-white: #FFFFFF;
+    --alrep-gray-evenlighter: #CBCBCB;
+    --alrep-gray-lighter: #C9C9C9;
+    --alrep-gray: #C4C4C4;
+    --alrep-gray-darker: #C0C0C0;
+    --alrep-gray-darkerer: #707070;
+    --alrep-outline: #3F3A2C;
+    --alrep-pink: #E38074;
+    --alrep-black: #000000;
+}
+
+@font-face {
+    font-family: 'Archivo-Regular';
+    src: url('../fonts/Archivo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Archivo-Light';
+    src: url('../fonts/Archivo-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Archivo-Italic';
+    src: url('../fonts/Archivo-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Archivo-Medium';
+    src: url('../fonts/Archivo-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AkkuratMono-Regular';
+    src: url('../fonts/AkkuratMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('../fonts/Poppins-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexMono-Regular';
+    src: url('../fonts/IBMPlexMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexMono-Medium';
+    src: url('../fonts/IBMPlexMono-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+    all: unset;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    all: unset;
+}
+li {
+    margin: 0;
+    padding: 0;
+    all: unset;
+}
+label {
+    all: unset;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+    all: unset;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid #000; /* albo własny styl */
+}

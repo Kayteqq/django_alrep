@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/contact_page.css' %}">
+{% endblock extra_css %}
+
+{% block header %}
+    <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF-pink.png' %}" alt="header image" class="header-image">
+{% endblock %}
+
+{% block main %}
+    <section class="section-title">
+        <h2 class="section-title__lead">Contact Us</h2>
+        <h1 class="section-title__title">Some short text that encourages for filling a contact form. Looking for high-quality profiles or window sills? Send us a message and let’s discuss your project.</h1>
+    </section>
+    <section class="section-contact" x-data="contactForm()">
+        <form x-ref="formElement" style="display: contents;" @submit.prevent="submitData()">
+            {% csrf_token %}
+            {% for field in form %}
+                <label class="section-contact__field">
+                    <span class="section-contact__note">
+                        {{ field.label }}
+                    </span>
+                    {{ field }}
+                </label>
+            {% endfor %}
+
+            <button class="section-contact__button" type="submit">SEND →</button>
+        </form>
+    </section>
+{% endblock main %}
+
+
+{% block extra_js %}
+    <script>
+        function contactForm() {
+            return {
+                loading: false,
+                message: '',
+                errors: {},
+                submitData() {
+                    this.loading = true;
+                    const formData = new FormData(this.$refs.formElement);
+
+
+                    fetch(window.location.href, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRFToken': formData.get('csrfmiddlewaretoken').toString()
+                        }
+                    })
+                    .then(async response => {
+                        const data = await response.json();
+                        if (response.ok && data.status === 'success')
+                        {
+                            this.message = data.message;
+                            this.$refs.formElement.reset();
+                        }
+                        else
+                        {
+                            this.errors = data.errors || {}
+                        }
+                    })
+                    .catch(error => alert(error))
+                    .finally(() => { this.loading = false});
+                }
+            }
+        }
+    </script>
+{% endblock %}

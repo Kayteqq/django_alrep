@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}homepage{% endblock %}
+
+{% block extra_css %}
+
+
+<link rel="stylesheet" href="{% static 'home/css/prtype_product_page.css' %}">
+{% endblock extra_css %}
+
+{% block header %}
+    <div style="display: contents"
+         x-data="{opened: false}"
+         @configurator-updated.window="opened = $event.detail.opened; console.log(opened)"
+    >
+        {% if page.configurator_type == 'C' %}
+            <template x-if="!opened">
+                <img src="{% static 'home/images/top/ALREP_windows_cills_05_01PF.png' %}" alt="header image" class="header-image-05">
+            </template>
+            <template x-if="opened">
+                <img src="{% static 'home/images/top/ALREP_windows_cills_03_01PF-edit.png' %}" alt="header image" class="header-image-02">
+            </template>
+        {% elif page.configurator_type == 'P' %}
+            <template x-if="!opened">
+                <img src="{% static 'home/images/top/ALREP_windows_cills_04_01PF.png' %}" alt="header image" class="header-image-04">
+            </template>
+            <template x-if="opened">
+                <img src="{% static 'home/images/top/ALREP_alu_profiles_04_01PF.png' %}" alt="header image" class="header-image-01">
+            </template>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block main %}
+    <section
+            class="section-configurator"
+            x-data="ptype_product_configurator()"
+            x-init="update()"
+            @blur="update()"
+            @focusout="update()"
+            @keydown.window="if(['Tab', 'Enter', ''].includes($event.key)) update()"
+            @mouseup.window="update()"
+    >
+    {% csrf_token %}
+
+        <template x-if="!opened">
+            <div class="section-configurator__step-1">
+                <div class="section-configurator__lead">
+                    Our Offer
+                </div>
+                <div class="section-configurator__title">
+                    Pressings
+                </div>
+                <div class="section-configurator__initial-choice">
+                    {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
+                        <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='L'; opened = !opened; update()">
+                            <div class="section-configurator__initial-choice__option__element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <span class="section-configurator__initial-choice__option__element__text">L-Shape</span>
+
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
+                        <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='Z'; opened = !opened; update()">
+                            <div class="section-configurator__initial-choice__option__element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <span class="section-configurator__initial-choice__option__element__text">Z-Shape</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if page.configurator_type == 'P' %}
+                        <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='C'; opened = !opened; update()">
+                            <div class="section-configurator__initial-choice__option__element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <span class="section-configurator__initial-choice__option__element__text">C-Shape</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </template>
+
+        <template x-if="opened">
+            <div class="section-configurator__step-2">
+                <div class="section-configurator__step-2__titles">
+                    <div class="section-configurator__lead">
+                        Our Offer
+                    </div>
+                    <div class="section-configurator__title">
+                        Pressings: <i>Configurator</i>
+                    </div>
+
+                </div>
+                <div class="section-configurator__svg-display" x-html="display">
+
+                </div>
+                <div class="section-configurator__input">
+                    <div class="section-configurator__input__text">
+                        Some short description about window sills and the configurator, its purpose, how it works, and the next steps |in the process.
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <p class="section-configurator__input__radio-span">select the shape</p>
+                        <div class="section-configurator__input__radio">
+                            {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
+                                <label class="section-configurator__input__option">
+                                    <input class="sr-only" type="radio" value="L" x-model="input.shape" @change="update()"/>
+                                    <span>L</span>
+                                </label>
+                            {% endif %}
+                            {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
+                                <label class="section-configurator__input__option">
+                                    <input class="sr-only" type="radio" value="Z" x-model="input.shape" @change="update()"/>
+                                    <span>Z</span>
+                                </label>
+                            {% endif %}
+                            {% if page.configurator_type == 'P' %}
+                                <label class="section-configurator__input__option">
+                                    <input class="sr-only" type="radio" value="C" x-model="input.shape" @change="update()"/>
+                                    <span>C</span>
+                                </label>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="section-configurator__input__block">
+                        <p class="section-configurator__input__radio-span">select sheet thickness g [mm]</p>
+                        <div class="section-configurator__input__radio">
+                            <label class="section-configurator__input__option">
+                                <input class="sr-only" type="radio" value="1.0" x-model="input.thicknessG" @change="update()"/>
+                                <span>1.0</span>
+                            </label>
+                            <label class="section-configurator__input__option">
+                                <input class="sr-only" type="radio" value="1.5" x-model="input.thicknessG" @change="update()"/>
+                                <span>1.5</span>
+                            </label>
+                            <label class="section-configurator__input__option">
+                                <input class="sr-only" type="radio" value="2.0" x-model="input.thicknessG" @change="update()"/>
+                                <span>2.0</span>
+                            </label>
+                            <label class="section-configurator__input__option">
+                                <input class="sr-only" type="radio" value="2.5" x-model="input.thicknessG" @change="update()"/>
+                                <span>2.5</span>
+                            </label>
+                            <label class="section-configurator__input__option">
+                                <input class="sr-only" type="radio" value="3.0" x-model="input.thicknessG" @change="update()"/>
+                                <span>3.0</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-depth-E">Depth E [mm]</label>
+                            <input
+                                    id="input-depth-E"
+                                    type="number"
+                                    x-model.number="input.depthE"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-drip-edge-height-H">Drip Edge Height H [mm]</label>
+                            <input
+                                    id="input-drip-edge-height-H"
+                                    type="number"
+                                    x-model.number="input.dripEdgeHeightH"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+                    <template x-if="input.shape!=='L'">
+                        <div class="section-configurator__input__block">
+                            <div class="section-configurator__input__line">
+                                <label for="input-apron-height-A">Apron Height A [mm]</label>
+                                <input
+                                        id="input-apron-height-A"
+                                        type="number"
+                                        x-model.number="input.apronHeightA"
+                                        inputmode="numeric"
+                                />
+                            </div>
+                        </div>
+                    </template>
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-width-L">Width L [mm]</label>
+                            <input
+                                    id="input-width-L"
+                                    type="number"
+                                    x-model.number="input.widthL"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-amount">Number of elements</label>
+                            <input
+                                    id="input-amount"
+                                    type="number"
+                                    x-model.number="input.amount"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__line">
+                            <label for="input-drip-edge-angle-alpha">Drip Edge Angle ⍺ [mm]</label>
+                            <input
+                                    id="input-drip-edge-angle-alpha"
+                                    type="number"
+                                    x-model.number="input.dripEdgeAngleAlpha"
+                                    inputmode="numeric"
+                            />
+                        </div>
+                    </div>
+                    <template x-if="input.shape!=='L'">
+                        <div class="section-configurator__input__block">
+                            <div class="section-configurator__input__line">
+                                <label for="input-apron-angle-beta">Apron Angle ꞵ [mm]</label>
+                                <input
+                                        id="input-apron-angle-beta"
+                                        type="number"
+                                        x-model.number="input.apronAngleBeta"
+                                        inputmode="numeric"
+                                />
+                            </div>
+                        </div>
+                    </template>
+
+                    <div class="section-configurator__input__block">
+                        <div class="section-configurator__input__grid">
+                            <label for="input-color">RAL Color Selection</label>
+                            <template x-if="data.selectedColor">
+                                <div class="color-display" style="grid-row: 2; grid-column: 1; z-index: 3;">
+                                        <p x-text="`${data.selectedColor.id} - ${data.selectedColor.name}`"></p>
+                                </div>
+                            </template>
+                            <input
+                                    style="grid-row: 2; grid-column: 1"
+                                    @focus="selectedColor = null; isActive = true"
+                                    @blur="isActive = false"
+                                    id="input-color"
+                                    type="text"
+                                    x-model.number="colorSearch"
+                                    inputmode="text"
+                                    :placeholder="`${data.selectedColor ? '' : 'Search RAL Color'}`"
+                            />
+                            <template x-if="filteredColors.length > 0 && !selectedColor">
+                                <ul class="section-configurator__input__color-list">
+                                    <template x-for="color in filteredColors" :key="color.id">
+                                        <li @click="selectColor(color)">
+                                            <div class="section-configurator__input__color-list__element">
+                                                <span class="font-bold" x-text="color.id"></span>
+                                                <span x-text="color.name"></span>
+                                                <span x-text="`#${color.hex}`"></span>
+
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </template>
+
+                        </div>
+                        <a class="section-configurator__confirm-button"
+                               href="{{ cart_page.url }}"
+                               @click.prevent="
+                                    await sendData(data, 'add-product');
+                                    window.location.href = {{ cart_page.url }}
+                               "
+                            >
+                                ADD TO BASKET <span x-text="`${(price*data.amount).toFixed(2)}£`"></span>
+                            </a>
+
+                    </div>
+                </div>
+{#                    <form action="/payments/create-checkout-session/" method="POST">#}
+                {#{#                        <button type="submit">Pay<span x-text="backendData.cost_total_gbp"></span>£</button>#}
+                {#{#                    </form>#}
+            </div>
+        </template>
+
+    </section>
+
+
+    <div style="display: none" id="product-type">{{ page.configurator_type }}</div>
+
+
+{% endblock main %}
+
+{% block extra_js %}
+    <script src="{% static 'home/js/ral_complete_colorset.js' %}"></script>
+    <script src="{% static 'home/js/ptype_product_configurator.js' %}"></script>
+{% endblock %}
