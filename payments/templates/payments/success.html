@@ -2,18 +2,21 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block body_class %}homepage{% endblock %}
-
 {% block extra_css %}
-
+    <link rel="stylesheet" href="{% static 'payments/css/payment.css' %}">
 {% endblock extra_css %}
 
-{% block content %}
-    <h1>Success</h1>
+{% block header %}
+    <img src="{% static 'home/images/top/ALREP_alu_profiles_06_01PF-pink.png' %}" alt="header image" class="header-image">
+{% endblock %}
 
-
-
-{% endblock content %}
+{% block main %}
+    <section class="section-main">
+        <h1 class="lead">Payment Successful</h1>
+        <p class="text">Thank you! We're proccessing your payment. Check your email inbox for confirmation of payment.</p>
+        <a href="/" class="return-home">back to shopping</a>
+    </section>
+{% endblock main %}
 
 {% block extra_js %}
 {% endblock %}
