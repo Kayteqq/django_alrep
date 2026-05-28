@@ -8,8 +8,7 @@
 {% endblock extra_css %}
 
 {% block header %}
-    <div style="display: contents"
-         x-data="{opened: false}"
+    <div x-data="{opened: false}"
          @configurator-updated.window="opened = $event.detail.opened; console.log(opened)"
     >
         <template x-if="!opened">

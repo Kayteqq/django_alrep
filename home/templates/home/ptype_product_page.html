@@ -10,8 +10,7 @@
 {% endblock extra_css %}
 
 {% block header %}
-    <div style="display: contents"
-         x-data="{opened: false}"
+    <div x-data="{opened: false}"
          @configurator-updated.window="opened = $event.detail.opened"
     >
         {% if page.configurator_type == 'C' %}
