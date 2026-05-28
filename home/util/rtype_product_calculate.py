@@ -1,8 +1,13 @@
-PLN_TO_GBP = 4.8
-STATIC_COST_PLN = 30
 
 
-def rtype_calculate_price(data: dir, pln_to_gbp: float, static_cost_pln: float):
+
+def rtype_calculate_price(data: dir, ):
+    from ..models import ShopSettings
+    settings = ShopSettings.load()
+    pln_to_gbp = float(settings.pln_to_gbp)
+
+
+
     cost_per_unit_pln: float = (
             (data['selectedDimensions']['price'] * data['widthL']) / 10000 +
             static_cost_pln

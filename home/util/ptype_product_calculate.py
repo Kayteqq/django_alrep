@@ -4,11 +4,15 @@
 # COST_PER_PAINT_PLN = 100
 # STATIC_COST_PLN = 30
 
-def ptype_calculate_price(data: dir, pln_to_gbp: float, cost_per_weight_pln: float, cost_per_bend_pln: float, cost_per_paint: float, static_cost_pln: float):
+def ptype_calculate_price(data: dir, cost_per_weight_pln: float, cost_per_bend_pln: float, cost_per_paint: float, static_cost_pln: float):
     num_bends: int = 0
     alum_area: float = 0.0
     num_paint: float = 0.0
     weight: float = 0.0
+
+    from ..models import ShopSettings
+    settings = ShopSettings.load()
+    pln_to_gbp = float(settings.pln_to_gbp)
 
     if data['shape'] == 'L':
         num_bends = 1

@@ -12,7 +12,7 @@
 {% block header %}
     <div style="display: contents"
          x-data="{opened: false}"
-         @configurator-updated.window="opened = $event.detail.opened; console.log(opened)"
+         @configurator-updated.window="opened = $event.detail.opened"
     >
         {% if page.configurator_type == 'C' %}
             <template x-if="!opened">
@@ -37,7 +37,7 @@
     <section
             class="section-configurator"
             x-data="ptype_product_configurator()"
-            x-init="update()"
+            x-init="update(); init()"
             @blur="update()"
             @focusout="update()"
             @keydown.window="if(['Tab', 'Enter', ''].includes($event.key)) update()"
@@ -51,14 +51,14 @@
                     Our Offer
                 </div>
                 <div class="section-configurator__title">
-                    Pressings
+                    {% if page.configurator_type == 'C' %}Window Cills{% elif page.configurator_type == 'P' %}Pressings{% endif %}
                 </div>
                 <div class="section-configurator__initial-choice">
                     {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
                         <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='L'; opened = !opened; update()">
                             <div class="section-configurator__initial-choice__option__element">
-                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
-                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/window_cills/ALREP_windows_cills_L-shape_01_01PF-bright.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/window_cills/ALREP_windows_cills_L-shape_01_01PF.png' %}" alt="element">
                                 <span class="section-configurator__initial-choice__option__element__text">L-Shape</span>
 
                             </div>
@@ -67,8 +67,8 @@
                     {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
                         <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='Z'; opened = !opened; update()">
                             <div class="section-configurator__initial-choice__option__element">
-                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
-                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/window_cills/ALREP_windows_cills_Z-shape_01_01PF-bright.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/window_cills/ALREP_windows_cills_Z-shape_01_01PF.png' %}" alt="element">
                                 <span class="section-configurator__initial-choice__option__element__text">Z-Shape</span>
                             </div>
                         </div>
@@ -76,8 +76,8 @@
                     {% if page.configurator_type == 'P' %}
                         <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='C'; opened = !opened; update()">
                             <div class="section-configurator__initial-choice__option__element">
-                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/ALREP_windows_cills_C-light.png' %}" alt="element">
-                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/ALREP_windows_cills_C-dark.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF-bright.png' %}" alt="element">
+                                <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF.png' %}" alt="element">
                                 <span class="section-configurator__initial-choice__option__element__text">C-Shape</span>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                         Our Offer
                     </div>
                     <div class="section-configurator__title">
-                        Pressings: <i>Configurator</i>
+                        {% if page.configurator_type == 'C' %}Window Cills{% elif page.configurator_type == 'P' %}Pressings{% endif %}: <i>Configurator</i>
                     </div>
 
                 </div>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="section-configurator__input">
                     <div class="section-configurator__input__text">
-                        Some short description about window sills and the configurator, its purpose, how it works, and the next steps |in the process.
+                        Some short description about {% if page.configurator_type == 'C' %}window cills{% elif page.configurator_type == 'P' %}pressings{% endif %} and the configurator, its purpose, how it works, and the next steps in the process.
                     </div>
                     <div class="section-configurator__input__block">
                         <p class="section-configurator__input__radio-span">select the shape</p>

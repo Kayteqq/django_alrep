@@ -7,6 +7,8 @@ document.addEventListener('alpine:init', () => {
 function rtype_product_configurator() {
     return {
         opened: false,
+        params: new URLSearchParams(window.location.search),
+        elements: [],
         input: {
             shape: '',
             name: '',
@@ -48,6 +50,29 @@ function rtype_product_configurator() {
             this.selectedColor = color;
             this.colorSearch = '';
         },
+
+        init() {
+            document.addEventListener("DOMContentLoaded", () => {
+
+                const nodes = document.querySelectorAll('.section-configurator__initial-choice__option__element');
+                this.elements = Array.from(nodes).map(node => ({
+                    id: node.querySelector('.id').textContent.trim(),
+                    name: node.querySelector('.name').textContent.trim()
+                }));
+
+                const urlId = this.params.get('type')
+                const match = this.elements.find(x => x.id === urlId);
+
+                if (match) {
+                    this.opened = true;
+                    this.input.name = match.name
+                    this.input.shape = match.id;
+                    this.loadDimensions()
+                }
+            });
+
+        },
+
 
         update() {
             window.dispatchEvent(new CustomEvent('configurator-updated', {

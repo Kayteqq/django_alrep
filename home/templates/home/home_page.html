@@ -10,7 +10,72 @@
 {% endblock extra_css %}
 
 {% block header %}
-    <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF.png' %}" alt="header image" class="header-image">
+    <div class="header-group">
+        <div class="header-animate-element">
+            <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF.png' %}" alt="header image" class="header-image-01">
+
+            <div class="header-container">
+                <h1 class="header-title">
+                    Profiles & Window Sills Engineered to Last
+                </h1>
+                <h2 class="header-subtitle">
+                    DESIGNED FOR DURABILITY, PRECISION,
+                    AND EVERYDAY PERFORMANCE H-1
+                </h2>
+            </div>
+        </div>
+        <div class="header-animate-element" >
+            <img src="{% static 'home/images/top/ALREP_alu_profiles_06_01PF.png' %}" alt="header image" class="header-image-02">
+
+            <div class="header-container">
+                <h1 class="header-title">
+                    Profiles & Window Sills Engineered to Last
+                </h1>
+                <h2 class="header-subtitle">
+                    DESIGNED FOR DURABILITY, PRECISION,
+                    AND EVERYDAY PERFORMANCE H-2
+                </h2>
+            </div>
+        </div>
+        <div class="header-animate-element" >
+            <img src="{% static 'home/images/top/ALREP_windows_cills_04_01PF.png' %}" alt="header image" class="header-image-03">
+
+            <div class="header-container">
+                <h1 class="header-title">
+                    Profiles & Window Sills Engineered to Last
+                </h1>
+                <h2 class="header-subtitle">
+                    DESIGNED FOR DURABILITY, PRECISION,
+                    AND EVERYDAY PERFORMANCE H-3
+                </h2>
+            </div>
+        </div>
+        <div class="header-animate-element" >
+            <img src="{% static 'home/images/top/ALREP_alu_profiles_04b_01PF.png' %}" alt="header image" class="header-image-04">
+
+            <div class="header-container">
+                <h1 class="header-title">
+                    Profiles & Window Sills Engineered to Last
+                </h1>
+                <h2 class="header-subtitle">
+                    DESIGNED FOR DURABILITY, PRECISION,
+                    AND EVERYDAY PERFORMANCE H-4
+                </h2>
+            </div>
+        </div>
+    </div>
+    <button class="header-btn left" id="prevBtn">
+        <svg class="header-btn__svg left"><use xlink:href="#arrow"></use></svg>
+    </button>
+    <button class="header-btn right" id="nextBtn">
+        <svg class="header-btn__svg right"><use xlink:href="#arrow"></use></svg>
+    </button>
+    <div class="header-dots">
+        <div class="header-dots__dot"></div>
+        <div class="header-dots__dot"></div>
+        <div class="header-dots__dot"></div>
+        <div class="header-dots__dot"></div>
+    </div>
 {% endblock %}
 
 {% block main %}
@@ -19,7 +84,7 @@
         <h1 class="section-products__lead">Our products</h1>
 
         <div class="section-products__grid">
-            <div class="section-products__grid__item">
+            <a href="/window-cills-configurator/?type=L" class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol1"></use>
@@ -28,8 +93,8 @@
                 <p class="section-products__grid__item__text">
                     L-Shaped Cills
                 </p>
-            </div>
-            <div class="section-products__grid__item">
+            </a>
+            <a href="/window-cills-configurator/?type=Z"  class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol2"></use>
@@ -38,47 +103,47 @@
                 <p class="section-products__grid__item__text">
                     Z-Shaped Cills
                 </p>
-            </div>
-            <div class="section-products__grid__item">
+            </a>
+            <a href="/profiles/?type=US" class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol3"></use>
                     </svg>
                 </div>
                 <p class="section-products__grid__item__text">
-                    U-Shaped Cills
+                    U-Shaped Profiles
                 </p>
-            </div>
-            <div class="section-products__grid__item">
+            </a>
+            <a href="/profiles/?type=TS" class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol4"></use>
                     </svg>
                 </div>
                 <p class="section-products__grid__item__text">
-                    Round Profiles
+                    T-Shaped Profiles
                 </p>
-            </div>
-            <div class="section-products__grid__item">
+            </a>
+            <a href="/profiles/?type=CT"  class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol5"></use>
                     </svg>
                 </div>
                 <p class="section-products__grid__item__text">
-                    Rectangular
+                    Round Tubes
                 </p>
-            </div>
-            <div class="section-products__grid__item">
+            </a>
+            <a href="/profiles/?type=RT"  class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol6"></use>
                     </svg>
                 </div>
                 <p class="section-products__grid__item__text">
-                    Open Profiles
+                    Rectangular Tubes
                 </p>
-            </div>
+            </a>
         </div>
     </section>
     <section class="section-categories">
@@ -119,78 +184,141 @@
             <img class="section-contact__left__img" src="{% static 'home/images/main/ALREP_alu_profiles_04b_01PF.png' %}" alt="profiles visualisation">
         </div>
         <div class="section-contact__right">
-            <button class="section-contact__right__button">contact us</button>
+            <a href="/contact" class="section-contact__right__button">contact us</a>
+{#            IMPORTANT TO CHANGE! #}
         </div>
     </section>
-{#    <section class="section-last-seen">#}
-{#        <h1 class="section-last-seen__lead">RECOMMENDED / LAST SEEN</h1>#}
-{#        <div class="section-last-seen__grid">#}
-{#            <div class="section-last-seen__grid__item">#}
-{#                <div class="section-last-seen__grid__item__img">#}
-{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
-{#                </div>#}
-{#                <h2 class="section-last-seen__grid__item__title">Flat plate</h2>#}
-{#                <div class="section-last-seen__grid__item__tags">#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Flat#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Aluminium#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        400MM#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        RAL PALETTE#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="section-last-seen__grid__item">#}
-{#                <div class="section-last-seen__grid__item__img">#}
-{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
-{#                </div>#}
-{#                <h2 class="section-last-seen__grid__item__title">Equal angle</h2>#}
-{#                <div class="section-last-seen__grid__item__tags">#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Flat Angle#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Aluminium#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        400MM#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        RAL PALETTE#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="section-last-seen__grid__item">#}
-{#                <div class="section-last-seen__grid__item__img">#}
-{#                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/element.png' %}" alt="element">#}
-{#                </div>#}
-{#                <h2 class="section-last-seen__grid__item__title">Rectangural tube</h2>#}
-{#                <div class="section-last-seen__grid__item__tags">#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Tube#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        Aluminium#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        400MM#}
-{#                    </p>#}
-{#                    <p class="section-last-seen__grid__item__tags__tag">#}
-{#                        RAL PALETTE#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
+    <section class="section-last-seen">
+        <h1 class="section-last-seen__lead">RECOMMENDED / LAST SEEN</h1>
+        <div class="section-last-seen__grid">
+            <a href="/profiles/?type=FP" class="section-last-seen__grid__item">
+                <div class="section-last-seen__grid__item__img">
+                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="element">
+                </div>
+                <h2 class="section-last-seen__grid__item__title">Flat plate</h2>
+                <div class="section-last-seen__grid__item__tags">
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Flat
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Aluminium
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        400MM
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        RAL PALETTE
+                    </p>
+                </div>
+            </a>
+            <a href="/profiles/?type=EA" class="section-last-seen__grid__item">
+                <div class="section-last-seen__grid__item__img">
+                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF.png' %}" alt="element">
+                </div>
+                <h2 class="section-last-seen__grid__item__title">Equal angle</h2>
+                <div class="section-last-seen__grid__item__tags">
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Flat Angle
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Aluminium
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        400MM
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        RAL PALETTE
+                    </p>
+                </div>
+            </a>
+            <a href="/profiles/?type=RT" class="section-last-seen__grid__item">
+                <div class="section-last-seen__grid__item__img">
+                    <img class="section-last-seen__grid__item__img__img" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF.png' %}" alt="element">
+                </div>
+                <h2 class="section-last-seen__grid__item__title">Rectangular tube</h2>
+                <div class="section-last-seen__grid__item__tags">
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Tube
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        Aluminium
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        400MM
+                    </p>
+                    <p class="section-last-seen__grid__item__tags__tag">
+                        RAL PALETTE
+                    </p>
+                </div>
+            </a>
+        </div>
+    </section>
 
 
 
 {% endblock main %}
 
 {% block extra_js %}
+    <script>
+        const slides = document.querySelectorAll('.header-animate-element');
+        const dots = document.querySelectorAll('.header-dots__dot');
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nextBtn = document.querySelector("#nextBtn");
+            const prevBtn = document.querySelector("#prevBtn");
+
+            let currentIndex = 0;
+            const intervalTime = 5; // W GSAP czas podajemy w sekundach (3 sekundy)
+            const fadeDuration = 0.8;
+            let timer; // Zmienna trzymająca nasz timer GSAP
+
+            // 1. Twardy reset na starcie (nadpisuje CSS, by uniknąć błędów renderowania)
+            gsap.set(slides, { opacity: 0 });
+            gsap.set(slides[0], { opacity: 1 });
+            gsap.set(dots, {opacity: 0.2})
+            gsap.set(dots[0], { opacity: 0.6 });
+
+
+            // 2. Główna funkcja przejścia
+            function goToSlide(newIndex) {
+            // Blokada: jeśli animacja wciąż trwa, ignorujemy kliknięcie (zapobiega spamowaniu)
+                if (gsap.isTweening(slides[currentIndex])) return;
+
+                gsap.to(slides[currentIndex], { opacity: 0, duration: fadeDuration, ease: "power1.inOut" });
+                gsap.to(dots[currentIndex], { opacity: 0.2, duration: fadeDuration, ease: "power1.inOut" });
+                currentIndex = newIndex;
+                gsap.to(slides[currentIndex], { opacity: 1, duration: fadeDuration, ease: "power1.inOut" });
+                gsap.to(dots[currentIndex], { opacity: 0.6, duration: fadeDuration, ease: "power1.inOut" });
+            }
+
+            // 3. Zarządzanie timerem
+            function resetTimer() {
+                if (timer) timer.kill(); // Zabijamy stary timer, jeśli istnieje
+                // gsap.delayedCall odpali funkcję nextSlide dokładnie po 3 sekundach
+                timer = gsap.delayedCall(intervalTime, nextSlide);
+            }
+
+            // 4. Funkcje nawigacji
+            function nextSlide() {
+                const newIndex = (currentIndex + 1) % slides.length;
+                goToSlide(newIndex);
+                resetTimer(); // Po zmianie slajdu znów zaczynamy odliczać 3 sekundy
+            }
+
+            function prevSlide() {
+                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goToSlide(newIndex);
+                resetTimer(); // Po ręcznym kliknięciu resetujemy czas do kolejnego auto-przejścia
+            }
+
+            // 5. Nasłuchiwanie przycisków
+            nextBtn.addEventListener("click", nextSlide);
+            prevBtn.addEventListener("click", prevSlide);
+
+            // 6. Uruchomienie całości dopiero, gdy DOM jest w pełni gotowy
+            resetTimer();
+        });
+
+    </script>
 {% endblock %}
