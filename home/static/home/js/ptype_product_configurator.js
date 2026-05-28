@@ -57,8 +57,8 @@ function ptype_product_configurator() {
         widthL: '1000',
         thicknessG: '2.0',
         amount: '1',
-        dripEdgeAngleAlpha: '110',
-        apronAngleBeta: '110',
+        dripEdgeAngleAlpha: '90',
+        apronAngleBeta: '90',
     }
 
 
@@ -177,7 +177,7 @@ function ptype_product_configurator() {
     // }
 
     return {
-        opened: true,
+        opened: false,
         params: new URLSearchParams(window.location.search),
         input: {
             // shape: defaultsL.shape,
