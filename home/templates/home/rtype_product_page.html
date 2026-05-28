@@ -44,40 +44,54 @@
                 </div>
                 <div class="section-configurator__initial-choice--flex">
                     {% for profile in profiles %}
-                        <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='{{ profile.profile_type }}'; input.name='{{ profile.title }}'; opened = !opened; loadDimensions(); update();">
-                            <div class="section-configurator__initial-choice__option__element">
-                                {% if profile.profile_type == 'FP' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'EA' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'UA' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'US' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'TS' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'SQ' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'RT' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'CT' %}
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF-bright.png' %}" alt="element">
-                                    <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF.png' %}" alt="element">
-                                {% elif profile.profile_type == 'AD' %}
+                        {% if profile.profile_type == 'AD' %}
+                            <div class="section-configurator__initial-choice__option" style="cursor: default">
+                                <div class="section-configurator__initial-choice__option__element">
+                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF-pink.png' %}" alt="element">
+                                    <span class="section-configurator__initial-choice__option__element__special">Our Special Offer</span>
+                                    <span class="section-configurator__initial-choice__option__element__order">Order now & enjoy free delivery</span>
+                                    <span class="section-configurator__initial-choice__option__element__percent">15% off</span>
+                                    <span class="section-configurator__initial-choice__option__element__plus">+</span>
 
-                                {% endif %}
-                                <span style="display: none" class="id">{{ profile.profile_type }}</span>
-                                <span class="section-configurator__initial-choice__option__element__text name">{{ profile.title }}</span>
 
+                                </div>
                             </div>
-                        </div>
+                        {% else %}
+                            <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='{{ profile.profile_type }}'; input.name='{{ profile.title }}'; opened = !opened; loadDimensions(); update();">
+                                <div class="section-configurator__initial-choice__option__element">
+                                    {% if profile.profile_type == 'FP' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'EA' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'UA' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'US' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'TS' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'SQ' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'RT' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'CT' %}
+                                        <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF-bright.png' %}" alt="element">
+                                        <img class="section-configurator__initial-choice__option__element__img top" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF.png' %}" alt="element">
+                                    {% elif profile.profile_type == 'AD' %}
+
+                                    {% endif %}
+                                    <span style="display: none" class="id">{{ profile.profile_type }}</span>
+                                    <span class="section-configurator__initial-choice__option__element__text name">{{ profile.title }}</span>
+
+                                </div>
+                            </div>
+                        {% endif %}
                     {% endfor %}
 
                 </div>
