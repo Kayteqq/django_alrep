@@ -24,11 +24,11 @@ from .util.price_total_calculate import calculate_total_price
 
 @register_setting
 class ShopSettings(BaseGenericSetting):
-    gbp_to_pln = models.DecimalField(
+    pln_to_gbp = models.DecimalField(
         decimal_places=2,
         max_digits=5,
         default=5.00,
-        help_text="current GBP to PLN",
+        help_text="current PLN to GBP",
     )
     tax = models.DecimalField(
         max_digits=4,

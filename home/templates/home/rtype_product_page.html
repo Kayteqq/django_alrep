@@ -9,7 +9,7 @@
 
 {% block header %}
     <div x-data="{opened: false}"
-         @configurator-updated.window="opened = $event.detail.opened; console.log(opened)"
+         @configurator-updated.window="opened = $event.detail.opened;"
     >
         <template x-if="!opened">
             <img src="{% static 'home/images/top/ALREP_alu_profiles_05_01PF.png' %}" alt="header image" class="header-image-03">

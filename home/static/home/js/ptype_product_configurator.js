@@ -330,8 +330,6 @@ function ptype_product_configurator() {
 
                 const urlId = this.params.get('type')
 
-                console.log(urlId);
-
                 if (urlId === 'L') {
                     this.opened = true;
                     this.input.shape = 'L';

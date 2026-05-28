@@ -1,7 +1,7 @@
 
 
 
-def rtype_calculate_price(data: dir, ):
+def rtype_calculate_price(data: dir):
     from ..models import ShopSettings
     settings = ShopSettings.load()
     pln_to_gbp = float(settings.pln_to_gbp)
@@ -9,8 +9,7 @@ def rtype_calculate_price(data: dir, ):
 
 
     cost_per_unit_pln: float = (
-            (data['selectedDimensions']['price'] * data['widthL']) / 10000 +
-            static_cost_pln
+            (data['selectedDimensions']['price'] * data['widthL']) / 10000
     )
 
     return {
