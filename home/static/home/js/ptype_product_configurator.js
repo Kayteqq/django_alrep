@@ -177,7 +177,7 @@ function ptype_product_configurator() {
     // }
 
     return {
-        opened: false,
+        opened: true,
         input: {
             // shape: defaultsL.shape,
             // depthE: defaultsL.depthE,
@@ -421,25 +421,28 @@ function ptype_product_configurator() {
                             <polygon points="0 0, 5 2.5, 0 5" fill="black" />
                         </marker>
                     </defs>
-
+<!--                                        E - line -->
                     <line x1="${SHAPE_START_X + widthA * Math.sin(betaRadians)}" x2="${SHAPE_START_X + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + widthA * Math.cos(betaRadians)}" y2="${SHAPE_START_Y + widthH + widthA * Math.cos(betaRadians) + MEASURING_LINE_LENGTH}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
                     <line x1="${SHAPE_START_X + widthA * Math.sin(betaRadians) + widthE}" x2="${SHAPE_START_X + widthE + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + widthA * Math.cos(betaRadians) - widthG}" y2="${SHAPE_START_Y + widthH + widthA * Math.cos(betaRadians) + MEASURING_LINE_LENGTH}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
-                    
-                    <line x1="${SHAPE_START_X + widthE - (LONG_ARC * widthG)}" x2="${SHAPE_START_X + widthE + MEASURING_LINE_LENGTH}" y1="${SHAPE_START_Y + widthA - widthG}" y2="${SHAPE_START_Y + widthA - widthG}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
-                    <line x1="${SHAPE_START_X + widthE}" x2="${SHAPE_START_X + widthE + MEASURING_LINE_LENGTH}" y1="${SHAPE_START_Y + widthH + widthA - widthG}" y2="${SHAPE_START_Y + widthH + widthA - widthG}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
-                    
-                    <line x1="${SHAPE_START_X}" x2="${SHAPE_START_X - MEASURING_LINE_LENGTH}" y1="${SHAPE_START_Y}" y2="${SHAPE_START_Y}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
-                    <line x1="${SHAPE_START_X + (LONG_ARC * widthG)}" x2="${SHAPE_START_X - MEASURING_LINE_LENGTH}" y1="${SHAPE_START_Y + widthA}" y2="${SHAPE_START_Y + widthA}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
-
-                    <line x1="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN}" x2="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN}" y1="${SHAPE_START_Y + widthA - widthG}" y2="${SHAPE_START_Y + widthH + widthA - widthG}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-                    <text x="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN - 2.25}" y="${SHAPE_START_Y + widthA - widthG + (0.5 * widthH) - 0.5}" font-size="10" font-family="sans-serif" transform="rotate(-90 ${SHAPE_START_X + widthE + MEASUREMENT_MARGIN} ${SHAPE_START_Y + widthA - widthG  + (0.5 * widthH)})">H</text>
-
+<!--                                        E - text-->
                     <line x1="${SHAPE_START_X + widthA * Math.sin(betaRadians)}" x2="${SHAPE_START_X + widthE + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + widthH  + MEASUREMENT_MARGIN + widthA * Math.cos(betaRadians)}" y2="${SHAPE_START_Y + widthH + MEASUREMENT_MARGIN + widthA * Math.cos(betaRadians)}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
                     <text x="${SHAPE_START_X + (0.5 * widthE) - 2}" y="${SHAPE_START_Y + widthH + widthA + MEASUREMENT_MARGIN - 2.5}" font-size="10" font-family="sans-serif">E</text>
 
-                    <line x1="${SHAPE_START_X - MEASUREMENT_MARGIN}" x2="${SHAPE_START_X - MEASUREMENT_MARGIN}" y1="${SHAPE_START_Y}" y2="${SHAPE_START_Y + widthA}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<!--                                        H - line -->
+                    <line x1="${SHAPE_START_X + widthE + widthA * Math.sin(betaRadians)}" x2="${SHAPE_START_X + widthE + MEASURING_LINE_LENGTH * Math.cos(alfaRadians) + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + widthA * Math.cos(betaRadians) - widthG}" y2="${SHAPE_START_Y + widthA * Math.cos(betaRadians) - widthG - MEASURING_LINE_LENGTH * Math.sin(alfaRadians) }" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
+                    <line x1="${SHAPE_START_X + widthE + widthA * Math.sin(betaRadians) + widthH * Math.sin(alfaRadians)}" x2="${SHAPE_START_X + widthE + MEASURING_LINE_LENGTH * Math.cos(alfaRadians) + widthA * Math.sin(betaRadians) + widthH * Math.sin(alfaRadians)}" y1="${SHAPE_START_Y + widthH * Math.cos(alfaRadians) + widthA * Math.cos(betaRadians) - widthG * Math.sin(alfaRadians)}" y2="${SHAPE_START_Y + widthH * Math.cos(alfaRadians) + widthA * Math.cos(betaRadians) - MEASURING_LINE_LENGTH * Math.sin(alfaRadians) - widthG * Math.sin(alfaRadians)}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
+<!--                                        H - text -->
+                    <line x1="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN + widthA * Math.sin(betaRadians)}" x2="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + widthA * Math.cos(betaRadians) - widthG}" y2="${SHAPE_START_Y + widthH + widthA * Math.cos(betaRadians)}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                    <text x="${SHAPE_START_X + widthE + MEASUREMENT_MARGIN - 2.25}" y="${SHAPE_START_Y + widthA - widthG + (0.5 * widthH) - 0.5}" font-size="10" font-family="sans-serif" transform="rotate(-90 ${SHAPE_START_X + widthE + MEASUREMENT_MARGIN} ${SHAPE_START_Y + widthA - widthG  + (0.5 * widthH)})">H</text>
+
+<!--                                        A - line -->
+                    <line x1="${SHAPE_START_X}" x2="${SHAPE_START_X - MEASURING_LINE_LENGTH * Math.cos(betaRadians)}" y1="${SHAPE_START_Y}" y2="${SHAPE_START_Y + MEASURING_LINE_LENGTH * Math.sin(betaRadians)}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
+                    <line x1="${SHAPE_START_X + widthA * Math.sin(betaRadians)}" x2="${SHAPE_START_X + widthA * Math.sin(betaRadians) - MEASURING_LINE_LENGTH * Math.cos(betaRadians)}" y1="${SHAPE_START_Y + widthA * Math.cos(betaRadians)}" y2="${SHAPE_START_Y + widthA * Math.cos(betaRadians) + MEASURING_LINE_LENGTH * Math.sin(betaRadians)}" stroke="black" stroke-width="${SMALL_STROKE_WIDTH}"/>
+<!--                                        A - text -->
+                    <line x1="${SHAPE_START_X - MEASUREMENT_MARGIN * Math.cos(betaRadians)}" x2="${SHAPE_START_X - MEASUREMENT_MARGIN * Math.cos(betaRadians) + widthA * Math.sin(betaRadians)}" y1="${SHAPE_START_Y + MEASUREMENT_MARGIN * Math.sin(betaRadians)}" y2="${SHAPE_START_Y + widthA * Math.cos(betaRadians) + MEASUREMENT_MARGIN * Math.sin(betaRadians)}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
                     <text x="${SHAPE_START_X - MEASUREMENT_MARGIN - 2}" y="${SHAPE_START_Y + (0.5 * widthA) - 0.5}" font-size="10" font-family="sans-serif" transform="rotate(-90 ${SHAPE_START_X - MEASUREMENT_MARGIN} ${SHAPE_START_Y + (0.5 * widthA)})">A</text>
 
+<!--                                        G - lext -->
                     <line x1="${SHAPE_START_X + positionGLabel}" x2="${SHAPE_START_X + positionGLabel}" y1="${SHAPE_START_Y+widthA-widthG}" y2="${SHAPE_START_Y+widthA-widthG-(0.5*MEASURING_LINE_LENGTH)}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)"/>
                     <line x1="${SHAPE_START_X + positionGLabel}" x2="${SHAPE_START_X + positionGLabel}" y1="${SHAPE_START_Y+widthA}" y2="${SHAPE_START_Y+widthA+(0.5*MEASURING_LINE_LENGTH)}" stroke="black" stroke-width="${BIG_STROKE_WIDTH}" marker-start="url(#arrow)"/>
                     <text x="${SHAPE_START_X + positionGLabel + (0.3 * MEASURING_LINE_LENGTH)}" y="${SHAPE_START_Y + widthA - widthG - 2}" font-size="10" font-family="sans-serif" transform="rotate(-90 ${SHAPE_START_X + positionGLabel} ${SHAPE_START_Y + widthA - widthG})">g</text>
