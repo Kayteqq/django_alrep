@@ -177,7 +177,7 @@ function ptype_product_configurator() {
     // }
 
     return {
-        opened: true,
+        opened: false,
         params: new URLSearchParams(window.location.search),
         input: {
             // shape: defaultsL.shape,
