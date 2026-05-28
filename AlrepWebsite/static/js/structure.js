@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  const header = document.querySelector('.main-header');
+  const header = document.querySelector('.header');
   if (header) {
     header.classList.add('is-loaded');
   }
