@@ -160,13 +160,6 @@ class PressingsTypeProductPage(Page):
         verbose_name='Type of configurator'
     )
 
-    pln_to_gbp = models.DecimalField(
-        verbose_name="PLN to GBP",
-        validators=[MinValueValidator(0)],
-        max_digits=10,
-        decimal_places=2
-    )
-
     cost_per_weight_pln = models.DecimalField(
         verbose_name="Weight Cost, PLN",
         validators=[MinValueValidator(0)],
@@ -197,7 +190,6 @@ class PressingsTypeProductPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('configurator_type'),
-        FieldPanel('pln_to_gbp'),
         FieldPanel('cost_per_weight_pln'),
         FieldPanel('cost_per_bend_pln'),
         FieldPanel('cost_per_paint'),
@@ -212,7 +204,6 @@ class PressingsTypeProductPage(Page):
 
                 if data['action'] == 'update-price':
                     prices = ptype_calculate_price(data,
-                                                   pln_to_gbp=float(self.pln_to_gbp),
                                                    cost_per_weight_pln=float(self.cost_per_weight_pln),
                                                    cost_per_bend_pln=float(self.cost_per_bend_pln),
                                                    cost_per_paint=float(self.cost_per_paint),
@@ -227,7 +218,6 @@ class PressingsTypeProductPage(Page):
 
                 elif data['action'] == 'add-product':
                     prices = ptype_calculate_price(data,
-                                                   pln_to_gbp=float(self.pln_to_gbp),
                                                    cost_per_weight_pln=float(self.cost_per_weight_pln),
                                                    cost_per_bend_pln=float(self.cost_per_bend_pln),
                                                    cost_per_paint=float(self.cost_per_paint),
@@ -261,13 +251,6 @@ class ProfilesTypeProductListingPage(Page):
     template = 'home/rtype_product_page.html'
     subpage_types = ['ProfileProductPage']
 
-    pln_to_gbp = models.DecimalField(
-        verbose_name="PLN to GBP",
-        validators=[MinValueValidator(0)],
-        max_digits=10,
-        decimal_places=2
-    )
-
     static_cost_pln = models.DecimalField(
         verbose_name="Static Cost, PLN",
         validators=[MinValueValidator(0)],
@@ -276,7 +259,6 @@ class ProfilesTypeProductListingPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('pln_to_gbp'),
         FieldPanel('static_cost_pln'),
     ]
 
@@ -293,10 +275,7 @@ class ProfilesTypeProductListingPage(Page):
 
                 if data['action'] == 'update-price':
                     print(data)
-                    prices = rtype_calculate_price(data,
-                                                   pln_to_gbp=float(self.pln_to_gbp),
-                                                   static_cost_pln=float(self.static_cost_pln)
-                                                   )
+                    prices = rtype_calculate_price(data)
 
                     return JsonResponse({
                         'status': 'success',
@@ -305,10 +284,7 @@ class ProfilesTypeProductListingPage(Page):
 
 
                 if data['action'] == 'add-product':
-                    prices = rtype_calculate_price(data,
-                                                   pln_to_gbp=float(self.pln_to_gbp),
-                                                   static_cost_pln=float(self.static_cost_pln)
-                                                   )
+                    prices = rtype_calculate_price(data)
                     unique_id = str(uuid.uuid4())
 
                     data.pop('action')
