@@ -349,6 +349,7 @@ class ProfilesTypeProductListingPage(Page):
                                 }
                     prices = rtype_calculate_price(data, prices_data)
                     unique_id = str(uuid.uuid4())
+
                     data.pop('action')
                     data['prices'] = prices
                     data['id'] = unique_id
