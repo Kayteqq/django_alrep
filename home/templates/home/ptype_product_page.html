@@ -278,6 +278,7 @@
                                     await sendData(data, 'add-product');
                                     window.location.href = {{ cart_page.url }}
                                "
+                               :style="`${(price*input.amount) <= 0.01 ? 'pointer-events: none;' : ''}`"
                             >
                                 ADD TO BASKET <span x-text="`${(price*data.amount).toFixed(2)}£`"></span>
                             </a>
