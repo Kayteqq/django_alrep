@@ -11,9 +11,9 @@ from wagtail import blocks
 from wagtail.admin.messages import render
 
 from wagtail.admin.panels import PageChooserPanel, FieldPanel
-from wagtail.contrib.settings.models import BaseGenericSetting
+from wagtail.contrib.settings.models import BaseGenericSetting, BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, RichTextField
 from wagtail.models import Page
 
 from .blocks import NavbarBlockContainer, PriceDimensionBlock
@@ -21,6 +21,20 @@ from .forms import ContactForm, OrderForm
 from .util.ptype_product_calculate import ptype_calculate_price
 from .util.rtype_product_calculate import rtype_calculate_price
 from .util.price_total_calculate import calculate_total_price
+
+@register_setting
+class SocialMediaSettings(BaseSiteSetting):
+    url_youtube     = models.URLField("URL Facebook",   blank=True, null=True)
+    url_instagram   = models.URLField("URL Instagram",  blank=True, null=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('url_youtube'),
+        FieldPanel('url_instagram'),
+    ]
+
+    class Meta:
+        verbose_name = 'Social Media - Linki'
+        verbose_name_plural = 'Social Media - Linki'
 
 @register_setting
 class ShopSettings(BaseGenericSetting):
@@ -556,3 +570,20 @@ class ContactPage(Page):
                     }, status=400)
 
         return super().serve(request, *args, **kwargs)
+
+    class DocumentPage(Page):
+        template = 'home/document_page.html'
+        parent_page_types = ['RootRedirectPage']
+        subpage_types = []
+
+        document_title = models.CharField("Title", max_length=255, blank=True)
+        document_body = RichTextField(blank=True, features=['h2'])
+
+        content_panels = Page.content_panels + [
+            FieldPanel('document_title'),
+            FieldPanel('document_body'),
+        ]
+
+        class Meta:
+            verbose_name = "Contract or Certification Page"
+            verbose_name_plural = "Contract or Certification Pages"
