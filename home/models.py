@@ -322,9 +322,33 @@ class ProfilesTypeProductListingPage(Page):
 
 
                 if data['action'] == 'add-product':
-                    prices = rtype_calculate_price(data)
-                    unique_id = str(uuid.uuid4())
+                    target_profile_type = data['shape']
+                    target_profile_size = data['selectedDimensions']['size']
 
+                    # Filtrujemy bezpośrednio model dziecka, wskazując, że rodzicem (child_of) jest obecna strona (self)
+                    profile_page = ProfileProductPage.objects.live().child_of(self).filter(
+                        profile_type=target_profile_type
+                    ).first()
+
+                    if not profile_page:
+                        return JsonResponse({'status': 'error', 'message': 'Profile type not found'}, status=404)
+
+                    prices_data = {}
+                    for block in profile_page.price_list:
+                        if block.block_type == 'dimension':
+                            if block.value.get('size') == target_profile_size:
+                                prices_data = {
+                                    'price_1000': float(block.value.get('price_per_meter_to_1000') or 0),
+                                    'price_2000': float(block.value.get('price_per_meter_to_2000') or 0),
+                                    'price_3000': float(block.value.get('price_per_meter_to_3000') or 0),
+                                    'price_4000': float(block.value.get('price_per_meter_to_4000') or 0),
+                                    'margin_1000': float(block.value.get('margin_1000') or 0),
+                                    'margin_2000': float(block.value.get('margin_2000') or 0),
+                                    'margin_3000': float(block.value.get('margin_3000') or 0),
+                                    'margin_4000': float(block.value.get('margin_4000') or 0),
+                                }
+                    prices = rtype_calculate_price(data, prices_data)
+                    unique_id = str(uuid.uuid4())
                     data.pop('action')
                     data['prices'] = prices
                     data['id'] = unique_id
