@@ -54,7 +54,40 @@
             <div style="display: contents">
                 <div class="section-shopping-cart__product">
                     <div class="section-shopping-cart__product__image">
-                        <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="product_icon">
+
+                        <template x-if="product.shape === 'L'">
+                            <img class="section-cart__grid__product__img" src="{% static 'home/images/window_cills/ALREP_windows_cills_L-shape_01_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'Z'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/window_cills/ALREP_windows_cills_Z-shape_01_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'C'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'FP'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'EA'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_2_equal_angle_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'UA'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_3_unequal_angle_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'US'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_4_u-shape_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'TS'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_5_t-shape_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'SQ'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_6_squere_tube_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'RT'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_7_rectangular_tube_01b_01PF.png' %}" alt="element"/>
+                        </template>
+                        <template x-if="product.shape === 'CT'">
+                            <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_8_tubes_01b_01PF.png' %}" alt="element"/>
+                        </template>
                     </div>
                     <p class="section-shopping-cart__product__product">
                         <span x-text="product.name"></span>

@@ -15,6 +15,8 @@ function shopping_cart_data() {
                     "name": "",
                     "price_unit": Number(initial_data[i].prices.cost_per_unit_gbp),
                     "quantity": Number(initial_data[i].amount),
+                    "product_id": initial_data[i].product,
+                    "shape": initial_data[i].shape,
                 }
                 if (initial_data[i].product === 'C')
                 {

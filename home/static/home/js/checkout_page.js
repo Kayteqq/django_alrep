@@ -106,7 +106,9 @@ function checkout_cart_data(){
                     "id": initial_data[i].id,
                     "name": "",
                     "price_unit": Number(initial_data[i].prices.cost_per_unit_gbp),
-                    "quantity": Number(initial_data[i].amount)
+                    "quantity": Number(initial_data[i].amount),
+                    "product_id": initial_data[i].product,
+                    "shape": initial_data[i].shape,
                 }
                 if (initial_data[i].product === 'C')
                 {
