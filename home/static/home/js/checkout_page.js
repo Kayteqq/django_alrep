@@ -1,5 +1,6 @@
 function checkout_page() {
     return {
+        mobileStep: 0,
         formMainData: {},
         formSubData: {},
         isAddressSeparate: 'false',
@@ -54,6 +55,7 @@ function checkout_page() {
             return data
         },
         submitData() {
+            console.log(this.totalPrice)
             this.loading = true
 
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;

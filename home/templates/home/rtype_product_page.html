@@ -45,9 +45,9 @@
                 <div class="section-configurator__initial-choice--flex">
                     {% for profile in profiles %}
                         {% if profile.profile_type == 'AD' %}
-                            <div class="section-configurator__initial-choice__option" style="cursor: default">
+                            <div class="section-configurator__initial-choice__option ad" style="cursor: default">
                                 <div class="section-configurator__initial-choice__option__element">
-                                    <img class="section-configurator__initial-choice__option__element__img bottom" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF-pink.png' %}" alt="element">
+                                    <img class="section-configurator__initial-choice__option__element__img bottom ad" src="{% static 'home/images/window_cills/ALREP_windows_cills_C-shape_01b_01PF-pink.png' %}" alt="element">
                                     <span class="section-configurator__initial-choice__option__element__special">Our Special Offer</span>
                                     <span class="section-configurator__initial-choice__option__element__order">Order now & enjoy free delivery</span>
                                     <span class="section-configurator__initial-choice__option__element__percent">15% off</span>
@@ -109,7 +109,30 @@
 
                 </div>
                 <div class="section-configurator__svg-display">
-
+                    <template x-if="input.shape === `FP`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/01_Flat_Plate_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `EA`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/02_Equal_Angle_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `UA`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/03_Unqual_Angle_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `US`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/04_U-Shape_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `TS`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/05_T-Shape_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `SQ`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/06_Square_Tube.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `RT`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/07_Rectangular_Tube_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
+                    <template x-if="input.shape === `CT`">
+                        <img class="display-image" src="{% static 'home/images/profile-icons/08_Tube_645x645px.png' %}" alt="profile visualizaiton">
+                    </template>
                 </div>
                 <div class="section-configurator__input">
                    <div class="section-configurator__input__text">
@@ -152,7 +175,7 @@
                         <div class="section-configurator__input__grid">
                             <label for="input-color">RAL Color Selection</label>
                             <template x-if="selectedColor">
-                                <div class="color-display" style="grid-row: 2; grid-column: 1; z-index: 3;">
+                                <div class="color-display" style="grid-row: 2; grid-column: 1; z-index: 13;">
                                         <p x-text="`${selectedColor.id} - ${selectedColor.name}`"></p>
                                 </div>
                             </template>
@@ -161,6 +184,7 @@
                                     @focus="selectedColor = null; isActive = true"
                                     @blur="isActive = false"
                                     id="input-color"
+                                    class="input-color"
                                     type="text"
                                     x-model.number="colorSearch"
                                     inputmode="text"

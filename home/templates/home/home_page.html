@@ -10,7 +10,9 @@
 {% endblock extra_css %}
 
 {% block header %}
-    <div class="header-group">
+    <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF-pink.png' %}" alt="header image" class="header-image-01 mobile">
+
+    <div class="header-group desktop">
         <div class="header-animate-element">
             <img src="{% static 'home/images/top/ALREP_windows_cills_04b_01PF.png' %}" alt="header image" class="header-image-01">
 
@@ -64,13 +66,13 @@
             </div>
         </div>
     </div>
-    <button class="header-btn left" id="prevBtn">
+    <button class="header-btn left desktop" id="prevBtn">
         <svg class="header-btn__svg left"><use xlink:href="#arrow"></use></svg>
     </button>
-    <button class="header-btn right" id="nextBtn">
+    <button class="header-btn right desktop" id="nextBtn">
         <svg class="header-btn__svg right"><use xlink:href="#arrow"></use></svg>
     </button>
-    <div class="header-dots">
+    <div class="header-dots desktop">
         <div class="header-dots__dot"></div>
         <div class="header-dots__dot"></div>
         <div class="header-dots__dot"></div>
@@ -81,8 +83,22 @@
 {% block main %}
 
     <section class="section-products">
-        <h1 class="section-products__lead">Our products</h1>
-
+        <h1 class="section-products__lead desktop">Our products</h1>
+        <h1 class="section-products__title  mobile">
+            Profiles & Window Sills Engineered to Last
+        </h1>
+        <p class="section-products__lead mobile">
+            DESIGNED FOR DURABILITY, PRECISION,
+            AND EVERYAY PERFOMANCE
+        </p>
+        <div class="section-products__lanes mobile">
+            <div class="lane active"></div>
+            <div class="lane active"></div>
+            <div class="lane active"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+        </div>
         <div class="section-products__grid">
             <a href="/window-cills-configurator/?type=L" class="section-products__grid__item">
                 <div class="section-products__grid__item__icon">
@@ -172,7 +188,7 @@
             Meet Alrep
         </h1>
         <p class="section-meet-alrep__text">
-            Some intro description that introduces company, products or values.<br>
+            Some intro description that introduces company, products or values.
             <b>ALREP employs a collaborative approach.</b> Together with the client, <b>the company
             helps to determine the project’s requirements and feasibility</b>. In just a short time,
             the company is able to give the client a precise estimate and concrete feedback

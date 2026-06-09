@@ -1,90 +1,190 @@
-.header {
-    background: var(--alrep-pink);
+@media (min-width: 768px)
+{
+    .header {
+        background: var(--alrep-pink);
+    }
+
+    .header-image {
+        position: absolute;
+        width: 95%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -44%);
+    }
+
+    .section-title {
+        margin-top: 5.375rem;
+        display: flex;
+        flex-direction: column;
+        padding-right: 10.41666667vw;
+    }
+
+    .section-title__lead {
+        font-family: 'Poppins-Regular', sans-serif;
+        font-size: 1rem;
+        line-height: 1.125rem;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        color: var(--alrep-black);
+        margin-bottom: 2.625rem;
+    }
+    .section-title__title {
+        font-family: 'Archivo-Light', sans-serif;
+        font-size: 2.375rem;
+        letter-spacing: -0.0475rem;
+        line-height: 2.875rem;
+        margin-bottom: 5.375rem;
+    }
+
+    .section-contact {
+        display: flex;
+        flex-direction: column;
+        padding-left: 22.91666667vw;
+        margin-bottom: 10.25rem;
+    }
+
+    .section-contact__field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+    }
+
+    .section-contact__note {
+        font-family: 'IBMPlexMono-Regular', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.1875rem;
+        padding-left: 0.625rem;
+        margin-bottom: 0.625rem;
+    }
+
+    .section-contact__input {
+        all: unset;
+        height: 3.125rem;
+        border: 0.75px solid var(--alrep-gray-darkerer);
+        border-radius: 1.25rem;
+        cursor: text;
+    }
+
+    .section-contact__textarea {
+        all: unset;
+        border: 0.75px solid var(--alrep-gray-darkerer);
+        border-radius: 1.25rem;
+        aspect-ratio: 870 / 360;
+        cursor: text;
+    }
+
+    .section-contact__button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 3.125rem;
+        border-radius: 1.25rem;
+        background-color: var(--alrep-black);
+        color: var(--alrep-white);
+
+        font-family: 'Poppins-Medium', sans-serif;
+        font-size: 1rem;
+        line-height: 1.125rem;
+        text-transform: uppercase;
+        padding-left: 1.25rem;
+    }
 }
 
-.header-image {
-    position: absolute;
-    width: 95%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -44%);
-}
+@media (max-width: 767px)
+{
+    .header {
+        background: var(--alrep-pink);
+    }
 
-.section-title {
-    margin-top: 5.375rem;
-    display: flex;
-    flex-direction: column;
-    padding-right: 10.41666667vw;
-}
+    .header-image {
+        position: absolute;
+        width: 300%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-65%, -50%);
+    }
 
-.section-title__lead {
-    font-family: 'Poppins-Regular', sans-serif;
-    font-size: 1rem;
-    line-height: 1.125rem;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    color: var(--alrep-black);
-    margin-bottom: 2.625rem;
-}
-.section-title__title {
-    font-family: 'Archivo-Light', sans-serif;
-    font-size: 2.375rem;
-    letter-spacing: -0.0475rem;
-    line-height: 2.875rem;
-    margin-bottom: 5.375rem;
-}
+    .section-title {
+        margin-top: 6.75rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-.section-contact {
-    display: flex;
-    flex-direction: column;
-    padding-left: 22.91666667vw;
-    margin-bottom: 10.25rem;
-}   
+    .section-title__lead {
+        font-family: 'Poppins-Light', sans-serif;
+        text-transform: uppercase;
+        font-weight: normal;
+        color: var(--alrep-black);
+        font-size: 1.375rem;
+        line-height: 1.625rem;
+        letter-spacing: 0.1375rem;
+        margin-bottom: 3.25rem;
+    }
+    .section-title__title {
+        font-family: 'Archivo-Light', sans-serif;
+        font-size: 2.75rem;
+        line-height: 3.5rem;
+        margin-bottom: 7.5rem;
+        text-shadow: 0 3px 6px #0000001A;
+    }
 
-.section-contact__field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.25rem;
-}
+    .section-contact {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15rem;
+    }
 
-.section-contact__note {
-    font-family: 'IBMPlexMono-Regular', sans-serif;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.1875rem;
-    padding-left: 0.625rem;
-    margin-bottom: 0.625rem;
-}
+    .section-contact__field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+    }
 
-.section-contact__input {
-    all: unset;
-    height: 3.125rem;
-    border: 0.75px solid var(--alrep-gray-darkerer);
-    border-radius: 1.25rem;
-    cursor: text;
-}
+    .section-contact__note {
+        font-family: 'IBMPlexMono-Regular', sans-serif;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+        letter-spacing: 0.275rem;
+        padding-left: 0.625rem;
+        margin-bottom: 0.625rem;
+    }
 
-.section-contact__textarea {
-    all: unset;
-    border: 0.75px solid var(--alrep-gray-darkerer);
-    border-radius: 1.25rem;
-    aspect-ratio: 870 / 360;
-    cursor: text;
-}
+    .section-contact__input {
+        all: unset;
+        height: 5rem;
+        border: 0.75px solid var(--alrep-gray-darkerer);
+        border-radius: 1.875rem;
+        padding-left: 0.5rem;
+        cursor: text;
+    }
 
-.section-contact__button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 3.125rem;
-    border-radius: 1.25rem;
-    background-color: var(--alrep-black);
-    color: var(--alrep-white);
+    .section-contact__textarea {
+        all: unset;
+        border: 0.75px solid var(--alrep-gray-darkerer);
+        border-radius: 1.875rem;
+        aspect-ratio: 345 / 210;
+        padding-left: 0.5rem;
 
-    font-family: 'Poppins-Medium', sans-serif;
-    font-size: 1rem;
-    line-height: 1.125rem;
-    text-transform: uppercase;
-    padding-left: 1.25rem;
+        cursor: text;
+    }
+
+    .section-contact__button {
+        margin-top: 0.625rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 5rem;
+        border-radius: 1.875rem;
+        background-color: var(--alrep-black);
+        color: var(--alrep-white);
+
+        font-family: 'Poppins-Medium', sans-serif;
+        font-size: 1.65rem;
+        line-height: 1.65rem;
+        text-transform: uppercase;
+        padding-left: 2.5rem;
+    }
 }

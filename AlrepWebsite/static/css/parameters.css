@@ -8,20 +8,20 @@ html {
 
 @media (min-width: 325px) {
     html {
-        font-size: 4px;
+        font-size: 8px;
     }
 }
 
 @media (min-width: 435px) {
     html {
-        font-size: 6px;
+        font-size: 10px;
     }
 }
 
 @media (min-width: 580px)
 {
     html {
-        font-size: 8px;
+        font-size: 12px;
     }
 }
 

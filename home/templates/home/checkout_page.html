@@ -17,7 +17,7 @@
 {% block main_class %}grid-main{% endblock %}
 
 {% block main %}
-    <section class="section-information">
+    <section class="section-information desktop">
         <div class="section-information__container">
             <h2 class="section-information__lead">
                 Check-Out
@@ -42,7 +42,7 @@
             {% endfor %}
         </form>
     </section>
-    <section class="section-shopping-cart"
+    <section class="section-shopping-cart desktop"
              x-data="checkout_cart_data()"
              x-init="init()"
     >
@@ -102,7 +102,7 @@
         </div>
 
     </section>
-    <section class="section-delivery">
+    <section class="section-delivery desktop">
         <div class="section-delivery__selection">
             <h1 class="section-delivery__title">
                 Delivery
@@ -144,7 +144,7 @@
             </div>
         </template>
     </section>
-    <section class="section-payment">
+    <section class="section-payment desktop">
         <h1 class="section-payment__title">
             Payment
         </h1>
@@ -159,6 +159,172 @@
             <button type="submit" :disabled="!isCompleted || loading"></button>
             continue to payment
         </form>
+
+    </section>
+
+    <section class="section-information mobile" :style="mobileStep === 0 ? '' : 'display: none'">
+        <div class="section-information__container">
+            <h2 class="section-information__lead">
+                Check-Out
+            </h2>
+            <h1 class="section-information__title">
+                Information
+            </h1>
+
+            <h3 class="section-information__subtitle">
+                BILLING INFORMATION
+            </h3>
+
+        </div>
+        <form style="display: contents;" x-ref="mainForm" @input="updateFormMainData()">
+            {% for field in form_main %}
+                <label class="section-information__field {% if field.label in "First Name* Last Name* Postcode* Phone Number*" %}half{% else %}full{% endif %}">
+                    <span class="section-information__note">
+                        {{ field.label }}
+                    </span>
+                    {{ field }}
+                </label>
+            {% endfor %}
+        </form>
+        <button class="next-button" @click="mobileStep=1">
+            NEXT →
+        </button>
+        <a class="back-button" href="/shopping-cart">
+            ← BACK TO CART
+        </a>
+    </section>
+
+    <section class="section-delivery mobile" @input="console.log(formMainData, formSubData)" :style="mobileStep === 1 ? '' : 'display: none'">
+        <div class="section-delivery__selection">
+            <h2 class="section-delivery__lead">
+                Check-Out
+            </h2>
+            <h1 class="section-delivery__title">
+                Delivery
+            </h1>
+            <h3 class="section-delivery__subtitle">
+                DELIVERY INFORMATION
+            </h3>
+            <label class="section-delivery__radio">
+                <input type="radio"
+                       value="false"
+                       x-model="isAddressSeparate"
+                       class="section-delivery__radio__input"
+                >
+                <span class="dot"></span>
+                use my billing address
+            </label>
+            <label class="section-delivery__radio">
+                <input type="radio"
+                       value="true"
+                       x-model="isAddressSeparate"
+                       class="section-delivery__radio__input"
+                >
+                <span class="dot"></span>
+                deliver to a different address
+            </label>
+        </div>
+        <template x-if="isAddressSeparate!=='false'">
+            <div class="section-delivery__container" x-init="updateFormSubData()">
+                <form style="display: contents;" x-ref="subForm" @input="updateFormSubData()">
+                    {% for field in form_sub %}
+                        <label class="section-information__field {% if field.label in "First Name* Last Name* Phone Number* E-Mail*" %}half{% else %}full{% endif %}">
+                            <span class="section-information__note">
+                                {{ field.label }}
+                            </span>
+                            {{ field }}
+                        </label>
+                    {% endfor %}
+                </form>
+            </div>
+        </template>
+
+        <button class="next-button" @click="mobileStep=2">
+            NEXT →
+        </button>
+        <button class="back-button" @click="mobileStep=0" >
+            ← BACK TO BILLING INFORMATION
+        </button>
+    </section>
+
+    <section class="section-shopping-cart mobile"
+             x-data="checkout_cart_data()"
+             x-init="init()"
+             :style="mobileStep === 2 ? '' : 'display: none'"
+    >
+        <h1 class="section-shopping-cart__title">
+            Shopping Bag (<span x-text="products.length"></span>)
+        </h1>
+        <hr class="section-shopping-cart__hr">
+        <template x-for="(product, index) in products" :key="index">
+            <div style="display: contents">
+                <div class="section-shopping-cart__product">
+                    <div class="section-shopping-cart__product__image">
+                        <img class="section-shopping-cart__product__image__img" src="{% static 'home/images/profiles/ALREP_alu_1_flat_plate_01b_01PF.png' %}" alt="product_icon">
+                    </div>
+                    <p class="section-shopping-cart__product__product">
+                        <span x-text="product.name"></span>
+                    </p>
+                    <p class="section-shopping-cart__product__price">
+                        <span x-text="product.price_unit"></span> GBP
+                    </p>
+                    <p class="section-shopping-cart__product__label">QUANTITY</p>
+                    <p class="section-shopping-cart__product__quantity">
+                        <span x-text="product.quantity"></span>
+                    </p>
+                </div>
+                <hr class="section-shopping-cart__hr">
+            </div>
+        </template>
+
+        <div class="section-shopping-cart__additives">
+            <p class="section-shopping-cart__parameter">
+                subtotal
+            </p>
+            <p class="section-shopping-cart__cost">
+                {{ subtotal_price }} GBP
+            </p>
+            <p class="section-shopping-cart__parameter">
+                vat ({{ settings.home.ShopSettings.tax }}%)
+            </p>
+            <p class="section-shopping-cart__cost">
+                {{ tax_price }} GBP
+            </p>
+            <p class="section-shopping-cart__parameter">
+                shipping
+            </p>
+            <p class="section-shopping-cart__cost">
+                {{ settings.home.ShopSettings.delivery_price }} GBP
+            </p>
+        </div>
+        <hr class="section-shopping-cart__hr">
+        <div class="section-shopping-cart__total">
+            <p class="section-shopping-cart__parameter medium">
+                Total
+            </p>
+            <p class="section-shopping-cart__cost medium-underline">
+                {{ total_price }} GBP
+            </p>
+        </div>
+    </section>
+    <section class="section-payment mobile" :style="mobileStep === 2 ? '' : 'display: none'">
+
+        <label class="section-payment__checkbox">
+            <input class="section-payment__checkbox__input" type="checkbox" x-model="isTermsAccepted" />
+            <span class="dot"></span>
+            <span class="section-payment__checkbox__label">I accept the <a href='/'>terms and conditions</a> and the <a href='/'>privacy policy</a></span>
+        </label>
+
+        <form :class="`next-button payment ${isCompleted ? 'accepted' : ''}`" @submit.prevent="submitData">
+            {% csrf_token %}
+            <button type="submit" :disabled="!isCompleted || loading" style="display: none;"></button>
+            <button type="submit" class="w-full text-center" :disabled="!isCompleted || loading"></button>
+            TO PAYMENT →
+        </form>
+
+        <button class="back-button" @click="mobileStep=1" >
+            ← BACK TO DELIVERY INFORMATION
+        </button>
 
     </section>
 
