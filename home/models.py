@@ -106,6 +106,9 @@ class NavbarLinksPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('navbar_links'),
+        FieldPanel('terms_conditions'),
+        FieldPanel('shopping_returns'),
+        FieldPanel('privacy_policy'),
     ]
 
     show_in_menus = False
