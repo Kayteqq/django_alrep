@@ -64,6 +64,12 @@
         border: 0.75px solid var(--alrep-gray-darkerer);
         border-radius: 1.25rem;
         cursor: text;
+
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: normal;
+        color: var(--alrep-black);
+        font-size: 1rem;
+        padding-left: 1rem;
     }
 
     .section-contact__textarea {
@@ -72,6 +78,12 @@
         border-radius: 1.25rem;
         aspect-ratio: 870 / 360;
         cursor: text;
+
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: normal;
+        color: var(--alrep-black);
+        font-size: 1rem;
+        padding: 0.5rem 1rem 0.5rem 1rem ;
     }
 
     .section-contact__button {

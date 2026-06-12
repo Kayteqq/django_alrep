@@ -41,6 +41,9 @@
                     <div class="section-configurator__title">
                         Profiles
                     </div>
+                    <p class="section-configurator__text">
+                        Browse our versatile profiles engineered for seamless integration across modern building systems. Combining durability, accuracy, and dependable performance, our profiles are designed to support efficient installation and lasting results.
+                    </p>
                 </div>
                 <div class="section-configurator__initial-choice--flex">
                     {% for profile in profiles %}
@@ -108,7 +111,7 @@
                     </div>
 
                 </div>
-                <div class="section-configurator__svg-display">
+                <div class="section-configurator__svg-display rtype">
                     <template x-if="input.shape === `FP`">
                         <img class="display-image" src="{% static 'home/images/profile-icons/01_Flat_Plate_645x645px.png' %}" alt="profile visualizaiton">
                     </template>
@@ -208,6 +211,11 @@
 
 
                         </div>
+                        <hr class="section-configurator__hr"/>
+                        <div class="section-configurator__summary">
+                            <div class="section-configurator__summary__left">Total</div>
+                            <div class="section-configurator__summary__right"><span x-text="`${(price*data.amount).toFixed(2)}`">GBP</span></div>
+                        </div>
                         <a class="section-configurator__confirm-button"
                                href="{{ cart_page.url }}"
                                @click.prevent="
@@ -216,8 +224,9 @@
                                "
                                :style="`${(price*input.amount) <= 0.01 ? 'pointer-events: none;' : ''}`"
                             >
-                                ADD TO BASKET <span x-text="`${(price*input.amount).toFixed(2)}£`"></span>
+                                ADD TO BASKET
                         </a>
+                        <a class="section-configurator__returns" href="{{ shopping_returns.url }}">Shipping & Returns</a>
                     </div>
 
                 </div>

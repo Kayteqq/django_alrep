@@ -52,6 +52,13 @@
                 <div class="section-configurator__title">
                     {% if page.configurator_type == 'C' %}Window Cills{% elif page.configurator_type == 'P' %}Pressings{% endif %}
                 </div>
+                <div class="section-configurator__text">
+                    {% if page.configurator_type == 'P' %}
+                        Explore our precision-crafted pressings developed to meet both functional and architectural requirements. Manufactured with attention to detail, they deliver strength, consistency, and a refined finish for a wide range of construction projects.
+                    {% elif page.configurator_type == 'C' %}
+                        Discover our range of high-quality window cills designed for durability, clean aesthetics, and reliable everyday performance. Engineered for both interior and exterior applications, our solutions combine precision manufacturing with long-lasting protection against weather and wear.
+                    {% endif %}
+                </div>
                 <div class="section-configurator__initial-choice">
                     {% if page.configurator_type == 'P' or page.configurator_type == 'C' %}
                         <div role="button" class="section-configurator__initial-choice__option" @click="input.shape='L'; opened = !opened; update()">
@@ -102,7 +109,11 @@
                 </div>
                 <div class="section-configurator__input">
                     <div class="section-configurator__input__text">
-                        Some short description about {% if page.configurator_type == 'C' %}window cills{% elif page.configurator_type == 'P' %}pressings{% endif %} and the configurator, its purpose, how it works, and the next steps in the process.
+                        {% if page.configurator_type == 'C' %}
+                            Create a solution tailored to your project in just a few simple steps. Configure your window cill by selecting the required dimensions and color.
+                        {% elif page.configurator_type == 'P' %}
+                            Create a solution tailored to your project in just a few simple steps. Configure your pressing by selecting the required dimensions and color.
+                        {% endif %}
                     </div>
                     <div class="section-configurator__input__block">
                         <p class="section-configurator__input__radio-span">select the shape</p>
@@ -214,7 +225,7 @@
 
                     <div class="section-configurator__input__block">
                         <div class="section-configurator__input__line">
-                            <label for="input-drip-edge-angle-alpha">Drip Edge Angle ⍺ [mm]</label>
+                            <label for="input-drip-edge-angle-alpha">Drip Edge Angle A [mm]</label>
                             <input
                                     id="input-drip-edge-angle-alpha"
                                     type="number"
@@ -226,7 +237,7 @@
                     <template x-if="input.shape!=='L'">
                         <div class="section-configurator__input__block">
                             <div class="section-configurator__input__line">
-                                <label for="input-apron-angle-beta">Apron Angle ꞵ [mm]</label>
+                                <label for="input-apron-angle-beta">Apron Angle B [mm]</label>
                                 <input
                                         id="input-apron-angle-beta"
                                         type="number"
@@ -272,6 +283,11 @@
                             </template>
 
                         </div>
+                        <hr class="section-configurator__hr"/>
+                        <div class="section-configurator__summary">
+                            <div class="section-configurator__summary__left">Total</div>
+                            <div class="section-configurator__summary__right"><span x-text="`${(price*data.amount).toFixed(2)}`">GBP</span></div>
+                        </div>
                         <a class="section-configurator__confirm-button"
                                href="{{ cart_page.url }}"
                                @click.prevent="
@@ -280,9 +296,9 @@
                                "
                                :style="`${(price*input.amount) <= 0.01 || input.shape === '' ? 'pointer-events: none;' : ''}`"
                             >
-                                ADD TO BASKET <span x-text="`${(price*data.amount).toFixed(2)}£`"></span>
-                            </a>
-
+                                ADD TO BASKET
+                        </a>
+                        <a class="section-configurator__returns" href="{{ shopping_returns.url }}">Shipping & Returns</a>
                     </div>
                 </div>
 {#                    <form action="/payments/create-checkout-session/" method="POST">#}

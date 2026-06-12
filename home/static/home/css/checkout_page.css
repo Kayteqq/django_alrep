@@ -519,6 +519,8 @@
 
     .section-information__lead {
         font-family: 'Poppins-Regular', sans-serif;
+        text-transform: uppercase;
+
         font-size: 1rem;
         line-height: 1.125rem;
         letter-spacing: 0.1rem;
@@ -544,6 +546,7 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1.25rem;
+
     }
     .section-information__field.full {
         grid-column: 1 / span 2;
@@ -564,6 +567,12 @@
         border: 0.75px solid var(--alrep-gray-darkerer);
         border-radius: 1.25rem;
         cursor: text;
+
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: normal;
+        color: var(--alrep-black);
+        font-size: 1rem;
+        padding-left: 1rem;
     }
 
     .section-shopping-cart {
@@ -784,6 +793,12 @@
         border: 0.75px solid var(--alrep-gray-darkerer);
         border-radius: 1.25rem;
         cursor: text;
+
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: normal;
+        color: var(--alrep-black);
+        font-size: 1rem;
+        padding-left: 1rem;
     }
 
     .section-payment {

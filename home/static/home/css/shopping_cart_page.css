@@ -212,7 +212,7 @@
 
     .section-cart__additives {
         display: grid;
-        grid-template-columns: 24.24242424% 1fr 1fr;
+        grid-template-columns: 17.42424243% 1fr 1fr;
         width: 100%;
         row-gap: 2rem;
     }
@@ -254,7 +254,7 @@
 
     .section-cart__summary {
         display: grid;
-        grid-template-columns: 20.45454545% 40.90909091% 1fr;
+        grid-template-columns: 13.63636364% 47.72727272% 1fr;
         column-gap: 3.78787879%;
 
     }
@@ -315,6 +315,7 @@
 
     }
     .section-cart__summary__note {
+        all: unset;
         grid-row: 3;
         grid-column: 1 / span 2;
         min-height: 9.375rem;
@@ -322,13 +323,13 @@
         border-radius: 1.25rem;
         margin-right: 9.84848485%;
 
-        padding: 0.25rem;
+        padding: 0.5rem 1rem 0.5rem 1rem ;
+
 
         font-family: 'Poppins-Regular', sans-serif;
         font-weight: normal;
-        color: var(--alrep-gray-darkerer);
+        color: var(--alrep-black);
         font-size: 1rem;
-        letter-spacing: 0.02rem;
 
 
     }
@@ -713,6 +714,7 @@
 
     }
     .section-cart__summary__note {
+        all: unset;
         grid-row: 3;
         grid-column: 1 / -1;
         min-height: 9.375rem;

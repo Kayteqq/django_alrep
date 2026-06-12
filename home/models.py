@@ -80,6 +80,30 @@ class NavbarLinksPage(Page):
         verbose_name='Navbar Links',
     )
 
+    terms_conditions = models.ForeignKey(
+        Page,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    shopping_returns = models.ForeignKey(
+        Page,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    privacy_policy = models.ForeignKey(
+        Page,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel('navbar_links'),
     ]

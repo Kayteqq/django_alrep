@@ -99,9 +99,21 @@
             <div class="lane"></div>
             <div class="lane"></div>
         </div>
-        <div class="section-products__grid">
+        <div class="section-products__grid"
+             x-data="{ show: false, text: '', x: 0, y: 0, isMoving: false}"
+        >
             <a href="/window-cills-configurator/?type=L" class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'L-Shaped Cills'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol1"></use>
                     </svg>
@@ -111,7 +123,17 @@
                 </p>
             </a>
             <a href="/window-cills-configurator/?type=Z"  class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'Z-Shaped Cills'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol2"></use>
                     </svg>
@@ -121,7 +143,17 @@
                 </p>
             </a>
             <a href="/profiles/?type=US" class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'U-Shaped Cills'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol3"></use>
                     </svg>
@@ -131,7 +163,17 @@
                 </p>
             </a>
             <a href="/profiles/?type=TS" class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'T-Shaped Cills'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol4"></use>
                     </svg>
@@ -141,7 +183,17 @@
                 </p>
             </a>
             <a href="/profiles/?type=CT"  class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'Round Tubes'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol5"></use>
                     </svg>
@@ -151,7 +203,17 @@
                 </p>
             </a>
             <a href="/profiles/?type=RT"  class="section-products__grid__item">
-                <div class="section-products__grid__item__icon">
+                <div class="section-products__grid__item__icon hover-target"
+                     @mouseenter="show = true; text = 'Rectangular Tubes'; "
+                     @mousemove="
+                        isMoving=true;
+                        x=$event.clientX;
+                        y = $event.clientY
+                        $debouncedShow();
+                     "
+                     @mouseleave="show = false; isMoving=false;"
+                     x-init="$debouncedShow = Alpine.debounce(() => isMoving = false, 250)"
+                >
                     <svg class="section-products__grid__item__icon__svg">
                         <use xlink:href="#categorySymbol6"></use>
                     </svg>
@@ -160,6 +222,13 @@
                     Rectangular Tubes
                 </p>
             </a>
+
+            <div class="custom-tooltip"
+                 x-text="text"
+                 :style="`left: ${x}px; top: ${y}px; opacity: ${show && !isMoving ? 1 : 0}`"
+            >
+
+            </div>
         </div>
     </section>
     <section class="section-categories">
@@ -188,7 +257,6 @@
             Meet Alrep
         </h1>
         <p class="section-meet-alrep__text">
-            Some intro description that introduces company, products or values.
             <b>ALREP employs a collaborative approach.</b> Together with the client, <b>the company
             helps to determine the project’s requirements and feasibility</b>. In just a short time,
             the company is able to give the client a precise estimate and concrete feedback
@@ -205,7 +273,7 @@
         </div>
     </section>
     <section class="section-last-seen">
-        <h1 class="section-last-seen__lead">RECOMMENDED / LAST SEEN</h1>
+        <h1 class="section-last-seen__lead">RECOMMENDED</h1>
         <div class="section-last-seen__grid">
             <a href="/profiles/?type=FP" class="section-last-seen__grid__item">
                 <div class="section-last-seen__grid__item__img">
@@ -269,6 +337,8 @@
             </a>
         </div>
     </section>
+
+
 
 
 

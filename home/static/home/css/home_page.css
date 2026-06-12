@@ -10,8 +10,8 @@
         position: absolute;
         width: 70%;
         left: 50%;
-        top: 50%;
-        transform: translate(-29%, -75%);
+        bottom: 50%;
+        transform: translate(-29%, 35%);
     }
     .header-image-03 {
         position: absolute;
@@ -161,7 +161,21 @@
     }
 
     .section-products__grid__item__icon:hover {
-        transform: scale(1.1);
+    }
+
+    .custom-tooltip {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: none !important;
+
+        font-family: 'Poppins-Regular', sans-serif;
+        font-size: 0.875rem;
+        color: var(--alrep-white);
+        background: var(--alrep-black);
+        line-height: 1.625rem;
+        padding: 0 1.5625rem 0 1.5625rem;
+        border-radius: 0.8125rem;
     }
 
     .section-products__grid__item__icon__svg {
@@ -645,7 +659,6 @@
     }
 
     .section-products__grid__item__icon:hover {
-        transform: scale(1.1);
     }
 
     .section-products__grid__item__icon__svg {
