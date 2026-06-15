@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_2" data-name="Warstwa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 385.68 156.8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #13110c;
+        stroke-miterlimit: 10;
+        stroke-width: .4px;
+      }
+
+      .cls-2 {
+        fill: #e37f73;
+      }
+
+      .cls-3 {
+        fill: #f18e8a;
+      }
+
+      .cls-4 {
+        fill: #d67063;
+      }
+    </style>
+  </defs>
+  <g id="base">
+    <g>
+      <g>
+        <polygon class="cls-3" points="385.43 113.89 385.43 121.88 226.11 156.55 226.09 156.55 226.07 156.53 226.07 147.55 226.11 147.55 385.43 113.89"/>
+        <polygon class="cls-4" points="385.43 113.89 226.11 147.55 226.07 147.55 .25 19.5 142.25 .26 385.43 113.89"/>
+        <polygon class="cls-3" points="226.07 156.53 226.09 156.55 226.07 156.55 226.07 156.53"/>
+        <polygon class="cls-2" points="226.07 147.55 226.07 156.53 .25 27.76 .25 19.5 226.07 147.55"/>
+      </g>
+      <g>
+        <line class="cls-1" x1="226.08" y1="147.55" x2="226.08" y2="156.55"/>
+        <line class="cls-1" x1="385.42" y1="113.88" x2="385.42" y2="121.88"/>
+        <line class="cls-1" x1="226.08" y1="156.55" x2="385.42" y2="121.88"/>
+        <line class="cls-1" x1="226.11" y1="147.55" x2="385.43" y2="113.89"/>
+        <line class="cls-1" x1=".25" y1="19.51" x2="142.24" y2=".25"/>
+        <line class="cls-1" x1="226.08" y1="147.55" x2=".25" y2="19.51"/>
+        <line class="cls-1" x1="385.42" y1="113.9" x2="142.24" y2=".25"/>
+        <line class="cls-1" x1=".25" y1="19.51" x2=".25" y2="27.77"/>
+        <line class="cls-1" x1="226.11" y1="156.55" x2=".25" y2="27.77"/>
+      </g>
+    </g>
+  </g>
+</svg>

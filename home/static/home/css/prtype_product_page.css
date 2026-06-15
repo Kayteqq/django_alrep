@@ -1254,3 +1254,8 @@ html {
         text-decoration: underline;
     }
 }
+
+.display-image {
+    max-width: 90%;
+    max-height: 90%;
+}
